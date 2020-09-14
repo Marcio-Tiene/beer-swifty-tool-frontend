@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Header } from '../../components/Header';
 import { Container, Hello } from './style';
 
 const Home: React.FC = () => {
@@ -11,6 +12,7 @@ const Home: React.FC = () => {
   }
   return (
     <Container>
+      <Header>asdas</Header>
       <Hello>Hello World</Hello>
       <Hello>
         <input
