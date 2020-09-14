@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import * as serviceWorker from './config/serviceWorker';
+
+import { GlobalStyle } from './GlobalStyles';
+import Error404 from './pages/Error404';
+import Home from './pages/Home';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <GlobalStyle />
+    <Switch>
+      <Route path='/' component={Home} exact />
+      <Route component={Error404} />
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
