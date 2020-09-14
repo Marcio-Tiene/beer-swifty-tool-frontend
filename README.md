@@ -71,6 +71,6 @@ Then publish on git hub with the command:
 
 eg:
 
-\$ git flow publish start wilson/creating-the-subscriber-button.
+\$ git flow publish wilson/creating-the-subscriber-button.
 
 ### Now start your pull requests to develop branch
