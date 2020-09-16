@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PageDefault from '../../components/PageDefault/indext';
-import { Container, Hello } from './style';
+import { Container, Hello, Span } from './style';
 
 const Home: React.FC = () => {
   return (

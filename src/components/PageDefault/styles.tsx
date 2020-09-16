@@ -9,8 +9,8 @@ export const Grid = styled.div`
   height: 100vh;
   display: grid;
 
-  grid-template-rows: minmax(50px, 80px) auto;
-  grid-template-columns: minmax(50px, 80px) auto;
+  grid-template-rows: calc(50px + 3vw) auto;
+  grid-template-columns: min-content auto;
 
   grid-template-areas:
     'HB HB'
@@ -31,6 +31,7 @@ export const HeaderBar = styled.div`
 `;
 export const Content = styled.div`
   grid-area: CT;
+  padding: 2vw;
   width: 100%;
   height: 100%;
 `;

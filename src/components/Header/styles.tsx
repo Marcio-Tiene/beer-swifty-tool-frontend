@@ -4,7 +4,7 @@ export const HeaderDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 2vw;
+  padding: 0 4%;
   top: 0;
   width: 100%;
   height: 100%;
@@ -15,11 +15,12 @@ export const HeaderDiv = styled.div`
 `;
 
 export const LogoImg = styled.img`
-  width: 7%;
+  height: 70%;
 `;
 
 export const Title = styled.h1`
   color: var(--grayLight);
-  padding: 0 2vw;
+  font-size: calc(15px + 3vw);
+  padding: 0 2%;
   text-shadow: 0px 5px 10px black;
 `;
