@@ -67,10 +67,10 @@ The you will be redirected to the branch:
 
 Then publish on git hub with the command:
 
-\$ git flow < job > publish < {your name}/{detailed job that are you doing, without capital letters and using "-" instead of "space"} >
+\$ git flow publish < {your name}/{detailed job that are you doing, without capital letters and using "-" instead of "space"} >
 
 eg:
 
-\$ git flow publish start wilson/creating-the-subscriber-button.
+\$ git flow publish wilson/creating-the-subscriber-button.
 
 ### Now start your pull requests to develop branch
