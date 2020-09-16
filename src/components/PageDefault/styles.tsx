@@ -31,7 +31,11 @@ export const HeaderBar = styled.div`
 `;
 export const Content = styled.div`
   grid-area: CT;
+
   padding: 2vw;
   width: 100%;
   height: 100%;
+
+  max-height: calc(100vh - 50px - 3vw);
+  overflow: scroll-y;
 `;

@@ -1,12 +1,31 @@
 import React from 'react';
 
 import PageDefault from '../../components/PageDefault/indext';
-import { Container, Hello, Span } from './style';
+import { Container, Hello } from './style';
 
 const Home: React.FC = () => {
   return (
     <PageDefault>
       <Container>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
+        <Hello>Hello World</Hello>
         <Hello>Hello World</Hello>
       </Container>
     </PageDefault>

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const NavDiv = styled.nav`
   padding: 1vw 0;
@@ -19,17 +19,13 @@ export const NavButton = styled.a`
   align-items: center;
 
   &:hover {
-    ${(Active) =>
-      Active
-        ? css`
-            border-radius: 20px;
-            background-color: var(--bg-color);
-            transition: linear 200ms;
-          `
-        : css``}
+    border-radius: 20px;
+    background-color: var(--bg-color);
+    transition: linear 200ms;
   }
 `;
 export const NavImg = styled.img`
+  width: 7vw;
   border-radius: 50%;
   box-shadow: 0px 0px 5px 5px var(--blackLighter);
 `;
