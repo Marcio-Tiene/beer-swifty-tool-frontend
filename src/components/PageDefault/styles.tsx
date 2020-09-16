@@ -9,12 +9,16 @@ export const Grid = styled.div`
   height: 100vh;
   display: grid;
 
-  grid-template-rows: calc(50px + 3vw) auto;
+  grid-template-rows: 80px auto;
   grid-template-columns: min-content auto;
 
   grid-template-areas:
     'HB HB'
     'NB CT';
+
+  @media screen and (max-width: 700px) {
+    grid-template-rows: 55px auto;
+  }
 `;
 
 export const NavBar = styled.div`
@@ -26,16 +30,17 @@ export const NavBar = styled.div`
 export const HeaderBar = styled.div`
   grid-area: HB;
   width: 100%;
+
   height: 100%;
   z-index: 1;
 `;
 export const Content = styled.div`
   grid-area: CT;
 
-  padding: 2vw;
-  width: 100%;
-  height: 100%;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-top: 2vw;
 
-  max-height: calc(100vh - 50px - 3vw);
-  overflow: scroll-y;
+  max-height: calc(100vh - 80px);
+  overflow: auto;
 `;

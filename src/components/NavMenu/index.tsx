@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavButton, NavDiv, NavImg, NavText } from './styles';
+import { NavButton, NavDiv, NavImg, NavText, ExpandButton } from './styles';
 import NavSpan1 from '../../assets/img/nav-span-1.png';
 import NavSpan2 from '../../assets/img/nav-span-2.png';
 import NavSpan3 from '../../assets/img/nav-span-3.png';
@@ -12,20 +12,24 @@ const NavMenu: React.FC = () => {
   }
 
   return (
-    <NavDiv onClick={Active}>
-      <NavButton>
-        <NavImg src={NavSpan1} alt='' />{' '}
+    <NavDiv>
+      <NavButton active={isActive}>
+        <NavImg src={NavSpan1} alt='' active={isActive} />{' '}
         {isActive && <NavText>Ahahahaha</NavText>}
       </NavButton>
-      <NavButton>
-        <NavImg src={NavSpan2} alt='' />
+      <NavButton active={isActive}>
+        <NavImg src={NavSpan2} alt='' active={isActive} />
+        {isActive && <NavText>Ahahahahakjasdkjsah</NavText>}
       </NavButton>
-      <NavButton href='#'>
-        <NavImg src={NavSpan3} alt='' />
+      <NavButton href='#' active={isActive}>
+        <NavImg src={NavSpan3} alt='' active={isActive} />
+        {isActive && <NavText>Ahahahaha</NavText>}
       </NavButton>
-      <NavButton>
-        <NavImg src={NavSpan4} alt='' />
+      <NavButton active={isActive}>
+        <NavImg src={NavSpan4} alt='' active={isActive} />
+        {isActive && <NavText>Ahahahaha</NavText>}
       </NavButton>
+      <ExpandButton onClick={Active} active={isActive} />
     </NavDiv>
   );
 };

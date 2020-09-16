@@ -7,6 +7,11 @@ const Home: React.FC = () => {
   return (
     <PageDefault>
       <Container>
+        <Hello>
+          Hello World Hello World klajsdhkas hdkasjhd kashdak sjhHello World
+          Hello World Hello World Hello World Hello World Hello World Hello
+          World Hello World Hello World
+        </Hello>
         <Hello>Hello World</Hello>
         <Hello>Hello World</Hello>
         <Hello>Hello World</Hello>
@@ -25,8 +30,7 @@ const Home: React.FC = () => {
         <Hello>Hello World</Hello>
         <Hello>Hello World</Hello>
         <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
+        <Hello>Hello Worldz</Hello>
       </Container>
     </PageDefault>
   );
