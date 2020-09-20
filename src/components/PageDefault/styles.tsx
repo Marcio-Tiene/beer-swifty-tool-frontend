@@ -34,7 +34,7 @@ export const HeaderBar = styled.div`
   height: 100%;
   z-index: 1;
 `;
-export const Content = styled.div`
+export const Content = styled.main`
   grid-area: CT;
 
   padding-left: 2vw;

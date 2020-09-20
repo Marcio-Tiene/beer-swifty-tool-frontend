@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const HeaderDiv = styled.div`
+  background: #f29f05 0% 0% no-repeat padding-box;
+  box-shadow: 0px 4px 0px #00000029;
+
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -9,7 +12,6 @@ export const HeaderDiv = styled.div`
   height: 100%;
 
   background-color: var(--primary-color);
-  box-shadow: 0px 5px 10px 2px var(--blackLighter);
 `;
 
 export const LogoImg = styled.img`
