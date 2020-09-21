@@ -8,12 +8,16 @@ import Card from '../../components/DashBoard/Card';
 import * as Server from '../../data/server.json';
 
 const Home: React.FC = () => {
+  const logedUser = Server.user.marcio.recipes;
   const recipeLenght =
-    Server.recipes.recipe_list.length < 1
-      ? `Total de ${Server.recipes.recipe_list.length} receitas`
-      : `Total de ${Server.recipes.recipe_list.length} receita`;
+    logedUser.recipe.length > 1
+      ? `Total de ${logedUser.recipe.length} receitas`
+      : `Total de ${logedUser.recipe.length} receita`;
 
-  const recipeUpdate = `Ultima atualização em ${Server.recipes.recipe_updated_at}`;
+  const recipeUpdate = `Ultima atualização em ${logedUser.recipe_updated_at.substring(
+    0,
+    10
+  )}`;
   return (
     <PageDefault>
       <Container>
@@ -34,7 +38,19 @@ const Home: React.FC = () => {
             CardInfo1={recipeLenght}
             CardInfo2={recipeUpdate}
           >
-            kjasdkjha
+            {logedUser.recipe.map((recipe, i: number) => {
+              while (i < 3) {
+                return (
+                  <>
+                    <h1 key={recipe.id}>{logedUser.recipe[i].recipe_name}</h1>
+                    <h3 key={recipe.id}>Estilo: {logedUser.recipe[i].style}</h3>
+                    <h3 key={recipe.id}>ABV: {logedUser.recipe[i].abv}%</h3>
+                    <hr />
+                  </>
+                );
+              }
+              return null;
+            })}
           </Card>
           <Card TitleBg='var(--secondary-color)'>kjasdkjha</Card>
           <Card TitleBg='var(--quaternary-color)'>kjasdkjha</Card>

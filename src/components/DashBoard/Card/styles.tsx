@@ -19,7 +19,7 @@ export const CardWrapper = styled.div`
 export const CardHeader = styled.header`
   background-color: ${(p: Props) => p.BgTitle};
   display: flex;
-  /* justify-content: space-around; */
+  justify-content: space-between;
   align-items: center;
 
   height: 18%;
@@ -28,17 +28,17 @@ export const CardHeader = styled.header`
   border-radius: 16px 16px 0 0;
 `;
 
-export const CardTitle = styled.h3`
+export const CardTitle = styled.h2`
   color: white;
   line-height: 100%;
-  padding: 0 2%;
-  width: 33%;
+  padding: 0 2% 0.8%;
+  width: fit-content;
 `;
 
 export const CardTitleInf = styled.p`
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: white;
   line-height: 100%;
   padding: 0 2%;
-  width: 33%;
+  width: fit-content;
 `;
