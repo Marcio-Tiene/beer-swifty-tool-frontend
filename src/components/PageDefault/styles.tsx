@@ -41,6 +41,6 @@ export const Content = styled.main`
   padding-right: 2vw;
   padding-top: 2vw;
 
-  max-height: calc(100vh - 80px);
+  max-height: 100%;
   overflow: auto;
 `;

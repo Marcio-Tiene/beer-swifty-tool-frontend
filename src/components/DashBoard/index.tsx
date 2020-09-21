@@ -1,17 +1,46 @@
-import styled from 'styled-components';
+import React from 'react';
+import UnderConst from '../../assets/img/under-contruction.png';
 
-const Dasboard = styled.div`
-  width: 100%;
-  height: 90%;
-  display: flex;
+import Card from '../Card';
+import RecipeBanner, { recipeLenght, recipeUpdate } from './RecipeBanner';
 
-  flex-wrap: wrap;
-  justify-content: center;
+import DashBoardDiv, { Title, UcImg } from './styles';
 
-  @media screen and (max-width: 920px) {
-    width: 100%;
-    height: 95%;
-  }
-`;
+const Dashboard = () => {
+  return (
+    <>
+      <DashBoardDiv>
+        <Title>Dashboard</Title>
+      </DashBoardDiv>
+      <DashBoardDiv>
+        <Card
+          Title='Recipes'
+          TitleBg='var(--primary-color)'
+          CardInfo1={recipeLenght}
+          CardInfo2={recipeUpdate}
+        >
+          <RecipeBanner />
+        </Card>
+        <Card
+          Title='Recipes'
+          TitleBg='var(--tertiary-color)'
+          CardInfo1='Total de 45 receitas'
+          CardInfo2='Ultima ataulização em 20/09/2020'
+        >
+          <UcImg src={UnderConst} />
+        </Card>
+      </DashBoardDiv>
 
-export default Dasboard;
+      <DashBoardDiv>
+        <Card TitleBg='var(--secondary-color)'>
+          <UcImg src={UnderConst} />
+        </Card>
+        <Card TitleBg='var(--quaternary-color)'>
+          <UcImg src={UnderConst} />
+        </Card>
+      </DashBoardDiv>
+    </>
+  );
+};
+
+export default Dashboard;
