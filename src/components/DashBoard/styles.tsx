@@ -19,6 +19,7 @@ export const Title = styled.h1`
 `;
 export const UcImg = styled.img`
   height: calc(337px - 18%);
+  width: 100%;
   padding: 0 30%;
 `;
 export default DashBoardDiv;
