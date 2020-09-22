@@ -34,13 +34,13 @@ export const HeaderBar = styled.div`
   height: 100%;
   z-index: 1;
 `;
-export const Content = styled.div`
+export const Content = styled.main`
   grid-area: CT;
 
   padding-left: 2vw;
   padding-right: 2vw;
   padding-top: 2vw;
 
-  max-height: calc(100vh - 80px);
+  max-height: 100%;
   overflow: auto;
 `;

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import anterior from '../../assets/img/anterior.svg';
-import proximo from '../../assets/img/proximo.svg';
+import previous from '../../assets/img/previous.svg';
+import next from '../../assets/img/next.svg';
 
 interface Props {
   active?: boolean;
@@ -64,37 +64,37 @@ export const NavImg = styled.img`
 
 export const NavText = styled.h3`
   padding-left: 1vw;
+  color: white;
+  text-shadow: 0px 5px 10px black;
 `;
 
 export const ExpandButton = styled.span`
   content: '';
-  background-color: white;
-  border: 1px solid black;
 
   ${(p: Props) =>
     p.active
       ? css`
-          background-image: url(${anterior});
+          background: white url(${previous}) center/ 100%;
         `
       : css`
-          background-image: url(${proximo});
+          background: white url(${next}) center/ 100%;
         `}
 
   cursor: pointer;
 
   position: fixed;
   bottom: 2vw;
-  flex-basis: flex-end;
+
   align-self: center;
-  align-content: flex-end;
-  width: 20px;
-  height: 20px;
+
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  box-shadow: 0px 0px 5px 5px var(--blackLighter);
-  transition: linear 300ms;
+  box-shadow: 0px 0px 4px #00000029;
+  transition: linear 100ms;
 
   &:hover {
-    box-shadow: 0px 0px 5px 5px black;
+    opacity: 0.7;
   }
 `;
 export const NavExpandText = styled.h3`
