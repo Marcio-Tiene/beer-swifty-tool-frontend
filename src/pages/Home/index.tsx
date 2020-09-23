@@ -6,9 +6,7 @@ import PageDefault from '../../components/PageDefault/';
 const Home: React.FC = () => {
   return (
     <PageDefault>
-      {/* <Container> */}
       <Dashboard />
-      {/* </Container> */}
     </PageDefault>
   );
 };

@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import UnderConst from '../../assets/img/under-contruction.png';
+import { getRecipes } from '../../repositories/Recipes';
 
 import Card from '../Card';
-import RecipeBanner, { recipeLenght, recipeUpdate } from './RecipeBanner';
+import RecipeBanner from './RecipeBanner';
 
 import DashBoardDiv, { Title, UcImg } from './styles';
 
+interface Dashboard {
+  updated_at?: string;
+}
+
 const Dashboard = () => {
+  const [recipes, setRecipes] = useState([{ updated_at: '' }]);
+  const recipeLenght =
+    recipes.length <= 0
+      ? `Total de 0 receitas`
+      : recipes.length === null || NaN
+      ? `Total de 0 receitas`
+      : recipes.length === 1
+      ? `Total de ${recipes.length} receita`
+      : `Total de ${recipes.length} receitas`;
+
+  const recipeUpdate = recipes[0].updated_at.substring(0, 10);
+
+  useEffect(() => {
+    getRecipes()
+      .then((data) => {
+        setRecipes(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
   return (
     <>
       <DashBoardDiv>
