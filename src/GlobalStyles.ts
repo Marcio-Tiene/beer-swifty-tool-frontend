@@ -32,13 +32,17 @@ html {
 body{
    
 
-    background: var(--bg-color);
+    background: #ffffff;
     -webkit-font-smoothing: antialiased;
 }
 
 a{
     color: var(--primary-color);
     text-decoration: none;
+
+    & .ColorFull {
+        color: white;
+    }
 
 }
 

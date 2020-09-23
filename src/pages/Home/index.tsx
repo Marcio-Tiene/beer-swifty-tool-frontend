@@ -1,37 +1,12 @@
 import React from 'react';
+import Dashboard from '../../components/DashBoard';
 
-import PageDefault from '../../components/PageDefault/indext';
-import { Container, Hello } from './style';
+import PageDefault from '../../components/PageDefault/';
 
 const Home: React.FC = () => {
   return (
     <PageDefault>
-      <Container>
-        <Hello>
-          Hello World Hello World klajsdhkas hdkasjhd kashdak sjhHello World
-          Hello World Hello World Hello World Hello World Hello World Hello
-          World Hello World Hello World
-        </Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello World</Hello>
-        <Hello>Hello Worldz</Hello>
-      </Container>
+      <Dashboard />
     </PageDefault>
   );
 };
