@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import UnderConst from '../../assets/img/under-contruction.png';
-import { getRecipes } from '../../repositories/Recipes';
+import GetRecipes from '../../hooks/GetRecipes';
 
 import Card from '../Card';
 import RecipeBanner from './RecipeBanner';
@@ -12,7 +12,8 @@ interface Dashboard {
 }
 
 const Dashboard = () => {
-  const [recipes, setRecipes] = useState([{ updated_at: '' }]);
+  const [recipes] = GetRecipes();
+
   const recipeLenght =
     recipes.length <= 0
       ? `Total de 0 receitas`
@@ -22,17 +23,10 @@ const Dashboard = () => {
       ? `Total de ${recipes.length} receita`
       : `Total de ${recipes.length} receitas`;
 
-  const recipeUpdate = recipes[0].updated_at.substring(0, 10);
+  const recipeUpated = new Date(
+    Math.max(...recipes.map((e: any) => new Date(e.updated_at)))
+  ).toLocaleDateString();
 
-  useEffect(() => {
-    getRecipes()
-      .then((data) => {
-        setRecipes(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
   return (
     <>
       <DashBoardDiv>
@@ -43,7 +37,7 @@ const Dashboard = () => {
           Title='Recipes'
           TitleBg='var(--primary-color)'
           CardInfo1={recipeLenght}
-          CardInfo2={recipeUpdate}
+          CardInfo2={recipeUpated}
         >
           <RecipeBanner />
         </Card>
