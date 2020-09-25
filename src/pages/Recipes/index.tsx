@@ -59,7 +59,7 @@ const Recipes: React.FC = () => {
     <PageDefault>
       <Div>
         {recipes.map((recipes: any) => {
-          // let styleDesc: string = '';
+          let styleDesc: string = '';
           let styleName: string = '';
           let styleImg: string = '';
           let updatedAt: string = new Date(
@@ -68,7 +68,7 @@ const Recipes: React.FC = () => {
 
           styles.map((style: any) => {
             if (style.id === recipes.style_id) {
-              // styleDesc = style.description;
+              styleDesc = style.description;
               styleName = style.style_name;
               styleImg = style.image_url;
             }
@@ -82,6 +82,7 @@ const Recipes: React.FC = () => {
                 <h3>{styleName}</h3>
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
+              <div>{styleDesc}</div>
               <h5 style={{ alignSelf: 'center', width: '33%' }}>
                 EBC:&nbsp;{recipes.color} &nbsp;&nbsp; ABV:&nbsp; {recipes.abv}%
                 &nbsp;&nbsp; IBU:&nbsp;
