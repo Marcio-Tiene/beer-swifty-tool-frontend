@@ -10,7 +10,7 @@ const RecipeBanner = () => {
   return (
     <>
       {recipes.slice(0, 3).map((recipes: any) => {
-        let styleDesc: string = '';
+        // let styleDesc: string = '';
         let styleName: string = '';
         let styleImg: string = '';
         let updatedAt: string = new Date(
@@ -19,26 +19,15 @@ const RecipeBanner = () => {
 
         styles.map((style: any) => {
           if (style.id === recipes.style_id) {
-            styleDesc = style.description;
+            // styleDesc = style.description;
             styleName = style.style_name;
             styleImg = style.image_url;
           }
+          return 1;
         });
-
         return (
           <DashBoardRecipeCard key={`${recipes.id}${recipes.recipe_name} `}>
-            <Span
-              BgImg={styleImg}
-              // style={{
-              //   height: '64px',
-              //   display: 'flex',
-              //   borderRadius: '50%',
-              //   border: '6px solid #f29f05',
-              //   width: '64px',
-              //   alignSelf: 'center',
-              //   overflow: 'hidden',
-              // }}
-            />
+            <Span BgImg={styleImg} />
             <DivName>
               <h1>{recipes.recipe_name}</h1>
               <h3>{styleName}</h3>
