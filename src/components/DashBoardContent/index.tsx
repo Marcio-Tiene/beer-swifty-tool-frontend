@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import UnderConst from '../../assets/img/under-contruction.png';
 import GetRecipes from '../../hooks/GetRecipes';
 
@@ -7,12 +8,9 @@ import RecipeBanner from './RecipeBanner';
 
 import DashBoardDiv, { Title, UcImg } from './styles';
 
-interface Dashboard {
-  updated_at?: string;
-}
-
-const Dashboard = () => {
+const DashboardContent = () => {
   const [recipes] = GetRecipes();
+  let history = useHistory();
 
   const recipeLenght =
     recipes.length <= 0
@@ -34,6 +32,9 @@ const Dashboard = () => {
       </DashBoardDiv>
       <DashBoardDiv>
         <Card
+          OnClick={() => {
+            history.push('/recipes');
+          }}
           Title='Recipes'
           TitleBg='var(--primary-color)'
           CardInfo1={recipeLenght}
@@ -41,21 +42,16 @@ const Dashboard = () => {
         >
           <RecipeBanner />
         </Card>
-        <Card
-          Title='Recipes'
-          TitleBg='var(--tertiary-color)'
-          CardInfo1='Total de 45 receitas'
-          CardInfo2='Ultima ataulização em 20/09/2020'
-        >
+        <Card Title='Under Construction' TitleBg='var(--tertiary-color)'>
           <UcImg src={UnderConst} />
         </Card>
       </DashBoardDiv>
 
       <DashBoardDiv>
-        <Card TitleBg='var(--secondary-color)'>
+        <Card Title='Under Construction' TitleBg='var(--secondary-color)'>
           <UcImg src={UnderConst} />
         </Card>
-        <Card TitleBg='var(--quaternary-color)'>
+        <Card Title='Under Construction' TitleBg='var(--quaternary-color)'>
           <UcImg src={UnderConst} />
         </Card>
       </DashBoardDiv>
@@ -63,4 +59,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardContent;
