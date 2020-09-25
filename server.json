@@ -8,7 +8,7 @@
       "ibu": "55",
       "abv": "7",
       "color": "16",
-      "style": "American India Pale Ale",
+      "style_id": 1,
       "malts_id": [
         {
           "malt_id": 1,
@@ -52,7 +52,7 @@
         }
       ],
       "created_at": "09-07-2020-18:48:57",
-      "updated_at": "09-07-2020-18:48:57"
+      "updated_at": "10-20-2020-18:48:57"
     },
     {
       "id": 2,
@@ -62,7 +62,7 @@
       "ibu": "30",
       "abv": "5,5",
       "color": "16",
-      "style": "Red Ale",
+      "style_id": 3,
       "malts_id": [
         {
           "malt_id": 1,
@@ -116,7 +116,7 @@
       "ibu": "25",
       "abv": "6",
       "color": "60",
-      "style": "Stout",
+      "style_id": 4,
       "malts_id": [
         {
           "malt_id": 1,
@@ -170,7 +170,7 @@
       "ibu": "8",
       "abv": "4,5",
       "color": "60",
-      "style": "Pilsen",
+      "style_id": 2,
       "malts_id": [
         {
           "malt_id": 1,
@@ -224,7 +224,7 @@
       "ibu": "55",
       "abv": "7",
       "color": "16",
-      "style": "American India Pale Ale",
+      "style_id": 1,
       "malts_id": [
         {
           "malt_id": 1,
@@ -270,7 +270,6 @@
       "created_at": "09-07-2020-18:48:57",
       "updated_at": "09-07-2020-18:48:57"
     },
-
     {
       "id": 6,
       "recipe_name": "Stout bruta",
@@ -279,7 +278,7 @@
       "ibu": "25",
       "abv": "6",
       "color": "60",
-      "style": "Stout",
+      "style_id": 4,
       "malts_id": [
         {
           "malt_id": 1,
@@ -387,6 +386,33 @@
       "hop_name": "cascade",
       "hop_type": "bittering/aroma",
       "accid": 9
+    }
+  ],
+  "style": [
+    {
+      "id": 1,
+
+      "style_name": "American Pale Ale",
+      "description": "Cerveja amarga pa porra",
+      "image_url": "https://image.freepik.com/free-photo/close-up-bar-tender-filling-beer-from-bar-pump_107420-65347.jpg"
+    },
+    {
+      "id": 2,
+      "style_name": "Pilsen",
+      "description": "Cerveja pra tomar de balde",
+      "image_url": "https://image.freepik.com/free-photo/glass-cold-beer-wooden-surface-sunny-day_181624-10656.jpg"
+    },
+    {
+      "id": 3,
+      "style_name": "Red Ale",
+      "description": "Cerveja maltada e Vermelha",
+      "image_url": "https://image.freepik.com/free-photo/pouring-beer_23-2148014997.jpg"
+    },
+    {
+      "id": 4,
+      "style_name": "Stout",
+      "description": "Cerveja preta pra tomar comendo chocolate",
+      "image_url": "https://image.freepik.com/free-psd/close-up-beer-bottles-wooden-table_23-2148270767.jpg"
     }
   ]
 }
