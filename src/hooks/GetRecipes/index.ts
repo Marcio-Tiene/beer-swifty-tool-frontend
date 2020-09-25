@@ -7,7 +7,7 @@ const GetRecipes = () => {
       id: 0,
       recipe_name: '',
       abv: 0,
-      style: '',
+      style_id: 0,
       updated_at: '',
     },
   ]);
@@ -20,12 +20,9 @@ const GetRecipes = () => {
       .catch((err) => {
         console.log(err.message);
       });
-
-    // getRecipes();
   }, []);
 
   return [recipes, setRecipes];
 };
-// const recipeUpdate: string = recipes[0].updated_at;
 
 export default GetRecipes;
