@@ -1,12 +1,12 @@
 import React from 'react';
-import Dashboard from '../../components/DashBoard';
+import DashboardContent from '../../components/DashBoardContent';
 
 import PageDefault from '../../components/PageDefault/';
 
 const Home: React.FC = () => {
   return (
     <PageDefault>
-      <Dashboard />
+      <DashboardContent />
     </PageDefault>
   );
 };

@@ -6,6 +6,7 @@ interface CardProps {
   CardInfo1?: string;
   CardInfo2?: string;
   Title?: string;
+  OnClick?: any;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -14,9 +15,10 @@ const Card: React.FC<CardProps> = ({
   Title,
   CardInfo1,
   CardInfo2,
+  OnClick,
 }) => {
   return (
-    <CardWrapper>
+    <CardWrapper onClick={OnClick}>
       <CardHeader BgTitle={TitleBg || '#000'}>
         <CardTitle>{Title}</CardTitle>
         <CardTitleInf>{CardInfo1}</CardTitleInf>
