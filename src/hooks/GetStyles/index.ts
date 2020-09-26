@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getRecipes, getStyles } from '../../repositories/Recipes';
+import { getStyles } from '../../repositories/Recipes';
 
 const GetStyles = () => {
   const [styles, setStyles] = useState<any>([
