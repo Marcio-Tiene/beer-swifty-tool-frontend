@@ -84,8 +84,8 @@ const Recipes: React.FC = () => {
               </DivName>
               <div>{styleDesc}</div>
               <h5 style={{ alignSelf: 'center', width: '33%' }}>
-                EBC:&nbsp;{recipes.color} &nbsp;&nbsp; ABV:&nbsp; {recipes.abv}%
-                &nbsp;&nbsp; IBU:&nbsp;
+                EBC:&nbsp;{recipes.color} &nbsp;&nbsp; ABV:&nbsp;{' '}
+                {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp; IBU:&nbsp;
                 {recipes.ibu}
               </h5>
             </DashBoardRecipeCard>

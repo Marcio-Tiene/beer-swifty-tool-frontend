@@ -3,11 +3,11 @@
     {
       "id": 1,
       "recipe_name": "I.P.A",
-      "og": "1.060",
-      "fg": "1.010",
-      "ibu": "55",
-      "abv": "7",
-      "color": "16",
+      "og": 1.06,
+      "fg": 1.01,
+      "ibu": 55,
+      "abv": 7,
+      "color": 16,
       "style_id": 1,
       "malts_id": [
         {
@@ -57,11 +57,11 @@
     {
       "id": 2,
       "recipe_name": "Red Ale",
-      "og": "1,050",
-      "fg": "1,010",
-      "ibu": "30",
-      "abv": "5,5",
-      "color": "16",
+      "og": 1.05,
+      "fg": 1.01,
+      "ibu": 30,
+      "abv": 5.5,
+      "color": 16,
       "style_id": 3,
       "malts_id": [
         {
@@ -111,11 +111,11 @@
     {
       "id": 3,
       "recipe_name": "Stout",
-      "og": "1,055",
-      "fg": "1,010",
-      "ibu": "25",
-      "abv": "6",
-      "color": "60",
+      "og": 1.055,
+      "fg": 1.01,
+      "ibu": 25,
+      "abv": 6,
+      "color": 60,
       "style_id": 4,
       "malts_id": [
         {
@@ -165,11 +165,11 @@
     {
       "id": 4,
       "recipe_name": "Pilsen",
-      "og": "1,040",
-      "fg": "1,010",
-      "ibu": "8",
-      "abv": "4,5",
-      "color": "60",
+      "og": 1.04,
+      "fg": 1.01,
+      "ibu": 8,
+      "abv": 4.5,
+      "color": 60,
       "style_id": 2,
       "malts_id": [
         {
@@ -219,11 +219,11 @@
     {
       "id": 5,
       "recipe_name": "I.P.A doida",
-      "og": "1.060",
-      "fg": "1.010",
-      "ibu": "55",
-      "abv": "7",
-      "color": "16",
+      "og": 1.06,
+      "fg": 1.01,
+      "ibu": 55,
+      "abv": 7,
+      "color": 16,
       "style_id": 1,
       "malts_id": [
         {
