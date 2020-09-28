@@ -1,12 +1,16 @@
 import React from 'react';
 import GetRecipes from '../../hooks/GetRecipes';
 import GetStyles from '../../hooks/GetStyles';
+
 import {
-  DashBoardRecipeCard,
-  DivName,
+  RecipeListPageDiv,
+  Wrapper,
+  RecipeListPageCard,
+  RecipeInfoBaner,
   Span,
-} from '../DashBoardContent/RecipeBanner/styles';
-import { RecipeListPageDiv, Wrapper, RecipeListPageCard } from './styles';
+  DivName,
+  Desc,
+} from './styles';
 
 const RecipeListContent = () => {
   const [styles] = GetStyles();
@@ -40,7 +44,7 @@ const RecipeListContent = () => {
                 <h3>{styleName}</h3>
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
-              <div>{styleDesc}</div>
+              <Desc>{styleDesc}</Desc>
               <h5 style={{ alignSelf: 'center', width: '33%' }}>
                 EBC:&nbsp;{recipes.color} &nbsp;&nbsp; ABV:&nbsp;{' '}
                 {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp; IBU:&nbsp;
@@ -50,6 +54,7 @@ const RecipeListContent = () => {
           );
         })}
       </RecipeListPageDiv>
+      <RecipeInfoBaner></RecipeInfoBaner>
     </Wrapper>
   );
 };
