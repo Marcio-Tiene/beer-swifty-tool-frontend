@@ -11,7 +11,7 @@ export const Wrapper = styled.main`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 471px;
+  grid-template-columns: 1fr 25%;
 
   grid-template-areas: 'RL RI';
 `;
@@ -92,13 +92,15 @@ export const DivName = styled.div`
 
 export const Desc = styled.div`
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   text-align: justify;
-  padding-top: 22px;
-  padding-right: 10px;
+
+  margin: 10px 0;
+  /* padding-top: 22px;
+  padding-right: 10px; */
   width: 50%;
   overflow-y: scroll;
-  height: 100%;
+  height: 80%;
 
   ::-webkit-scrollbar {
     max-height: 2px;
