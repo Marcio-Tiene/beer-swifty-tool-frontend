@@ -1,12 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import UnderConst from '../../assets/img/under-contruction.png';
+
 import GetRecipes from '../../hooks/GetRecipes';
 
 import Card from '../Card';
 import RecipeBanner from './RecipeBanner';
 
-import DashBoardDiv, { Title, UcImg } from './styles';
+import DashBoardDiv, { Title } from './styles';
 
 const DashboardContent = () => {
   const [recipes] = GetRecipes();
@@ -42,18 +42,18 @@ const DashboardContent = () => {
         >
           <RecipeBanner />
         </Card>
-        <Card Title='Under Construction' TitleBg='var(--tertiary-color)'>
-          <UcImg src={UnderConst} />
-        </Card>
+        <Card Title='Under Construction' TitleBg='var(--tertiary-color)'></Card>
       </DashBoardDiv>
 
       <DashBoardDiv>
-        <Card Title='Under Construction' TitleBg='var(--secondary-color)'>
-          <UcImg src={UnderConst} />
-        </Card>
-        <Card Title='Under Construction' TitleBg='var(--quaternary-color)'>
-          <UcImg src={UnderConst} />
-        </Card>
+        <Card
+          Title='Under Construction'
+          TitleBg='var(--secondary-color)'
+        ></Card>
+        <Card
+          Title='Under Construction'
+          TitleBg='var(--quaternary-color)'
+        ></Card>
       </DashBoardDiv>
     </>
   );

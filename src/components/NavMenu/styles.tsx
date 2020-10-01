@@ -66,6 +66,7 @@ export const NavText = styled.h3`
   padding-left: 1vw;
   color: white;
   text-shadow: 0px 5px 10px black;
+  width: 200px;
 `;
 
 export const ExpandButton = styled.span`
