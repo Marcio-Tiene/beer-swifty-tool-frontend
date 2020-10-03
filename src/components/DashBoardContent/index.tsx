@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
+import RecipeApiCall from '../../contexts/recipeContext';
 
 import GetRecipes from '../../hooks/GetRecipes';
 
@@ -9,7 +10,8 @@ import RecipeBanner from './RecipeBanner';
 import DashBoardDiv, { Title } from './styles';
 
 const DashboardContent = () => {
-  const [recipes] = GetRecipes();
+  const { LogedIn } = useContext(RecipeApiCall);
+  const [recipes, recipeUpated] = GetRecipes();
   let history = useHistory();
 
   const recipeLenght =
@@ -21,12 +23,9 @@ const DashboardContent = () => {
       ? `Total de ${recipes.length} receita`
       : `Total de ${recipes.length} receitas`;
 
-  const recipeUpated = new Date(
-    Math.max(...recipes.map((e: any) => new Date(e.updated_at)))
-  ).toLocaleDateString();
-
   return (
     <>
+      {/* <RecipeApiCall.Provider value={{ LogedIn }}> */}
       <DashBoardDiv>
         <Title>Dashboard</Title>
       </DashBoardDiv>
@@ -42,7 +41,9 @@ const DashboardContent = () => {
         >
           <RecipeBanner />
         </Card>
-        <Card Title='Under Construction' TitleBg='var(--tertiary-color)'></Card>
+        <Card Title='Under Construction' TitleBg='var(--tertiary-color)'>
+          {LogedIn}
+        </Card>
       </DashBoardDiv>
 
       <DashBoardDiv>
@@ -55,6 +56,7 @@ const DashboardContent = () => {
           TitleBg='var(--quaternary-color)'
         ></Card>
       </DashBoardDiv>
+      {/* </RecipeApiCall.Provider> */}
     </>
   );
 };

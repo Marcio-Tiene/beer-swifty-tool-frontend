@@ -10,6 +10,7 @@ import {
   Span,
   DivName,
   Desc,
+  RecipeAtt,
 } from './styles';
 
 const RecipeListContent = () => {
@@ -17,9 +18,19 @@ const RecipeListContent = () => {
 
   const [recipes] = GetRecipes();
 
+  const recipeUpated = new Date(
+    Math.max(...recipes.map((e: any) => new Date(e.updated_at)))
+  ).toLocaleDateString();
+
   return (
     <Wrapper>
       <RecipeListPageDiv>
+        <h1 style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
+          Receitas
+        </h1>
+        <p style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
+          Última atualização em : {recipeUpated}
+        </p>
         {recipes.map((recipes: any) => {
           let styleDesc: string = '';
           let styleName: string = '';
@@ -45,11 +56,13 @@ const RecipeListContent = () => {
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
               <Desc>{styleDesc}</Desc>
-              <h5 style={{ alignSelf: 'center', width: '33%' }}>
-                EBC:&nbsp;{recipes.color} &nbsp;&nbsp; ABV:&nbsp;{' '}
-                {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp; IBU:&nbsp;
-                {recipes.ibu}
-              </h5>
+              <RecipeAtt>
+                <h3 style={{ color: '#592B02' }}>
+                  EBC:&nbsp;{recipes.color} &nbsp; &nbsp; ABV:&nbsp;{' '}
+                  {Number(recipes.abv).toFixed(1)} &nbsp;&nbsp;IBU: &nbsp;
+                  {recipes.ibu}{' '}
+                </h3>
+              </RecipeAtt>
             </RecipeListPageCard>
           );
         })}

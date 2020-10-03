@@ -5,9 +5,11 @@ import PageDefault from '../../components/PageDefault/';
 
 const Home: React.FC = () => {
   return (
-    <PageDefault>
-      <DashboardContent />
-    </PageDefault>
+    <>
+      <PageDefault>
+        <DashboardContent />
+      </PageDefault>
+    </>
   );
 };
 
