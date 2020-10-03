@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
-import RecipeApiCall from '../../contexts/recipeContext';
 
 import GetRecipes from '../../hooks/GetRecipes';
 
@@ -10,8 +9,12 @@ import RecipeBanner from './RecipeBanner';
 import DashBoardDiv, { Title } from './styles';
 
 const DashboardContent = () => {
-  const { LogedIn } = useContext(RecipeApiCall);
-  const [recipes, recipeUpated] = GetRecipes();
+  const [recipes] = GetRecipes();
+
+  const recipeUpated = new Date(
+    Math.max(...recipes.map((e: any) => new Date(e.updated_at)))
+  ).toLocaleDateString();
+
   let history = useHistory();
 
   const recipeLenght =
@@ -41,9 +44,7 @@ const DashboardContent = () => {
         >
           <RecipeBanner />
         </Card>
-        <Card Title='Under Construction' TitleBg='var(--tertiary-color)'>
-          {LogedIn}
-        </Card>
+        <Card Title='Under Construction' TitleBg='var(--tertiary-color)'></Card>
       </DashBoardDiv>
 
       <DashBoardDiv>

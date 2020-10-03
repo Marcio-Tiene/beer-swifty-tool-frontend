@@ -62,6 +62,7 @@ const RecipeListContent = () => {
                   {Number(recipes.abv).toFixed(1)} &nbsp;&nbsp;IBU: &nbsp;
                   {recipes.ibu}{' '}
                 </h3>
+                <h1>Aqui Vem o rating</h1>
               </RecipeAtt>
             </RecipeListPageCard>
           );
