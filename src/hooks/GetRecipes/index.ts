@@ -1,48 +1,34 @@
 import { useEffect, useState } from 'react';
+
 import { getRecipes } from '../../repositories/Recipes';
+import { Recipes } from '../../types';
 
 const GetRecipes = () => {
-  const [recipesRaw, setRecipesRaw] = useState<any>([
-    {
-      id: 0,
-      recipe_name: '',
-      abv: 0,
-      style_id: 0,
-      updated_at: '',
-    },
-  ]);
-  const [recipes, setRecipes] = useState<any>([
-    {
-      id: 0,
-      recipe_name: '',
-      abv: 0,
-      style_id: 0,
-      updated_at: '',
-    },
-  ]);
+  const [recipes, setRecipes] = useState<Recipes[]>([]);
+
+  function SortRecipesByDate(recipes: Recipes[]) {
+    recipes.sort((recipe_01: Recipes, recipe_02: Recipes) => {
+      const date_01InMs = new Date(`${recipe_01.updated_at}`).getTime();
+      const date_02InMs = new Date(`${recipe_02.updated_at}`).getTime();
+
+      return date_02InMs - date_01InMs;
+    });
+    return recipes;
+  }
 
   useEffect(() => {
     getRecipes()
-      .then((data) => {
-        setRecipesRaw(data);
+      .then((recipeDbData) => {
+        const recipeSortedByDate = SortRecipesByDate(recipeDbData);
+
+        setRecipes(recipeSortedByDate);
       })
       .catch((err) => {
         console.log(err.message);
       });
   }, []);
 
-  useEffect(() => {
-    setRecipes(
-      recipesRaw.sort((a: any, b: any) => {
-        var c = new Date(b.updated_at).getTime();
-        var d = new Date(a.updated_at).getTime();
-
-        return c - d;
-      })
-    );
-  }, [recipesRaw]);
-
-  return [recipes, setRecipes];
+  return [recipes];
 };
 
 export default GetRecipes;

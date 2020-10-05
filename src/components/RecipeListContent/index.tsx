@@ -1,6 +1,7 @@
 import React from 'react';
 import GetRecipes from '../../hooks/GetRecipes';
 import GetStyles from '../../hooks/GetStyles';
+import { Recipes, Styles } from '../../types';
 
 import {
   RecipeListPageDiv,
@@ -10,6 +11,7 @@ import {
   Span,
   DivName,
   Desc,
+  RecipeAtt,
 } from './styles';
 
 const RecipeListContent = () => {
@@ -17,22 +19,35 @@ const RecipeListContent = () => {
 
   const [recipes] = GetRecipes();
 
+  const recipesLastUpdate = new Date(
+    Math.max(
+      ...recipes.map((recipe: Recipes) =>
+        new Date(`${recipe.updated_at}`).getTime()
+      )
+    )
+  ).toLocaleDateString();
+
   return (
     <Wrapper>
       <RecipeListPageDiv>
-        {recipes.map((recipes: any) => {
-          let styleDesc: string = '';
-          let styleName: string = '';
-          let styleImg: string = '';
-          let updatedAt: string = new Date(
-            recipes.updated_at
-          ).toLocaleDateString();
+        <h1 style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
+          Receitas
+        </h1>
+        <p style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
+          Última atualização em : {recipesLastUpdate}
+        </p>
+        {recipes.map((recipes: Recipes) => {
+          let styleDesc = '';
+          let styleName = '';
+          let styleImg = '';
+          let updatedAt = new Date(`
+            ${recipes.updated_at}`).toLocaleDateString();
 
-          styles.map((style: any) => {
+          styles.map((style: Styles) => {
             if (style.id === recipes.style_id) {
-              styleDesc = style.description;
-              styleName = style.style_name;
-              styleImg = style.image_url;
+              styleDesc = style.description as string;
+              styleName = style.style_name as string;
+              styleImg = style.image_url as string;
             }
             return 1;
           });
@@ -45,11 +60,14 @@ const RecipeListContent = () => {
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
               <Desc>{styleDesc}</Desc>
-              <h5 style={{ alignSelf: 'center', width: '33%' }}>
-                EBC:&nbsp;{recipes.color} &nbsp;&nbsp; ABV:&nbsp;{' '}
-                {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp; IBU:&nbsp;
-                {recipes.ibu}
-              </h5>
+              <RecipeAtt>
+                <h3 style={{ color: '#592B02' }}>
+                  EBC:&nbsp;{recipes.color} &nbsp; &nbsp; ABV:&nbsp;{' '}
+                  {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp;IBU: &nbsp;
+                  {recipes.ibu}{' '}
+                </h3>
+                <h1>Aqui Vem o rating</h1>
+              </RecipeAtt>
             </RecipeListPageCard>
           );
         })}

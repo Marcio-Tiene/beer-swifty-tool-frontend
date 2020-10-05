@@ -1,26 +1,21 @@
 import { useEffect, useState } from 'react';
 import { getStyles } from '../../repositories/Recipes';
+import { Styles } from '../../types';
 
 const GetStyles = () => {
-  const [styles, setStyles] = useState<any>([
-    {
-      id: 0,
-      style_name: '',
-      description: '',
-    },
-  ]);
+  const [styles, setStyles] = useState<Styles[]>([]);
 
   useEffect(() => {
     getStyles()
-      .then((data) => {
-        setStyles(data);
+      .then((styelesData) => {
+        setStyles(styelesData);
       })
       .catch((err) => {
         console.log(err.message);
       });
   }, []);
 
-  return [styles, setStyles];
+  return [styles];
 };
 
 export default GetStyles;

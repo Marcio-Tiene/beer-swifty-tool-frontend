@@ -6,7 +6,7 @@ interface CardProps {
   CardInfo1?: string;
   CardInfo2?: string;
   Title?: string;
-  OnClick?: any;
+  OnClick?: () => void;
 }
 
 const Card: React.FC<CardProps> = ({

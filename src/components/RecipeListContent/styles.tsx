@@ -11,7 +11,7 @@ export const Wrapper = styled.main`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 25%;
+  grid-template-columns: 1fr 0%;
 
   grid-template-areas: 'RL RI';
 `;
@@ -21,16 +21,14 @@ export const RecipeListPageDiv = styled.div`
   display: flex;
   width: 100%;
 
-  padding-top: 130px;
-  max-height: 98%;
+  max-height: 100%;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
-    max-height: 2px;
-    width: 2px;
+    width: 1.5px;
   }
 
   /* Track */
@@ -40,7 +38,7 @@ export const RecipeListPageDiv = styled.div`
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: rgba(var(--primary-color) 0.5);
+    background: var(--primary-color);
   }
 `;
 
@@ -96,10 +94,10 @@ export const Desc = styled.div`
   text-align: justify;
 
   margin: 10px 0;
-  /* padding-top: 22px;
-  padding-right: 10px; */
+  /* /* padding-top: 22px; */
+  padding-right: 10px;
   width: 50%;
-  overflow-y: scroll;
+  overflow: hidden;
   height: 80%;
 
   ::-webkit-scrollbar {
@@ -114,11 +112,22 @@ export const Desc = styled.div`
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: rgba(var(--primary-color) 0.5);
+    background: var(--primary-color);
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(var(--secondary-color) 0.5);
+    background: var(--secondary-color);
   }
+`;
+
+export const RecipeAtt = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  width: 33%;
+  height: 100%;
+
+  padding: 10px 10px;
 `;
