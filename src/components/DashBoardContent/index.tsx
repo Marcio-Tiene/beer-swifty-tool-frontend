@@ -2,15 +2,25 @@ import React from 'react';
 import { useHistory } from 'react-router';
 
 import GetRecipes from '../../hooks/GetRecipes';
+import { Recipes } from '../../types';
 
 import Card from '../Card';
 import RecipeBanner from './RecipeBanner';
 
 import DashBoardDiv, { Title } from './styles';
 
-const DashboardContent = () => {
+const DashboardContent: React.FC = () => {
   const [recipes] = GetRecipes();
-  let history = useHistory();
+
+  const recipesLastUpdate = new Date(
+    Math.max(
+      ...recipes.map((recipe: Recipes) =>
+        new Date(`${recipe.updated_at}`).getTime()
+      )
+    )
+  ).toLocaleDateString();
+
+  const history = useHistory();
 
   const recipeLenght =
     recipes.length <= 0
@@ -20,10 +30,6 @@ const DashboardContent = () => {
       : recipes.length === 1
       ? `Total de ${recipes.length} receita`
       : `Total de ${recipes.length} receitas`;
-
-  const recipeUpated = new Date(
-    Math.max(...recipes.map((e: any) => new Date(e.updated_at)))
-  ).toLocaleDateString();
 
   return (
     <>
@@ -38,10 +44,11 @@ const DashboardContent = () => {
           Title='Recipes'
           TitleBg='var(--primary-color)'
           CardInfo1={recipeLenght}
-          CardInfo2={recipeUpated}
+          CardInfo2={recipesLastUpdate}
         >
           <RecipeBanner />
         </Card>
+
         <Card Title='Under Construction' TitleBg='var(--tertiary-color)'></Card>
       </DashBoardDiv>
 

@@ -9,15 +9,16 @@ import Home from './pages/Home';
 import Recipes from './pages/Recipes';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <>
+    <BrowserRouter>
+      <Switch>
+        <Route path='/' component={Home} exact />
+        <Route path='/recipes' component={Recipes} exact />
+        <Route component={Error404} />
+      </Switch>
+    </BrowserRouter>
     <GlobalStyle />
-    <Switch>
-      <Route path='/' component={Home} exact />
-      <Route path='/recipes' component={Recipes} exact />
-
-      <Route component={Error404} />
-    </Switch>
-  </BrowserRouter>,
+  </>,
   document.getElementById('root')
 );
 
