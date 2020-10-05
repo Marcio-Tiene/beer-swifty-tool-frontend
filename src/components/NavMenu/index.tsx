@@ -26,15 +26,15 @@ const NavMenu: React.FC = () => {
       </NavButton>
       <NavButton active={isActive}>
         <NavImg src={NavSpan2} alt='' active={isActive} />
-        {isActive && <NavText>Ahahahahakjasdkjsah</NavText>}
+        {isActive && <NavText>Receitas</NavText>}
       </NavButton>
       <NavButton href='#' active={isActive}>
         <NavImg src={NavSpan3} alt='' active={isActive} />
-        {isActive && <NavText>Ahahahaha</NavText>}
+        {isActive && <NavText>Equipamentos</NavText>}
       </NavButton>
       <NavButton active={isActive}>
         <NavImg src={NavSpan4} alt='' active={isActive} />
-        {isActive && <NavText>Ahahahaha</NavText>}
+        {isActive && <NavText>Estoque</NavText>}
       </NavButton>
       <ExpandButton onClick={Active} active={isActive} />
     </NavDiv>

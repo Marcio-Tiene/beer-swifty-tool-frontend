@@ -97,7 +97,7 @@ export const Desc = styled.div`
   /* /* padding-top: 22px; */
   padding-right: 10px;
   width: 50%;
-  overflow-y: scroll;
+  overflow: hidden;
   height: 80%;
 
   ::-webkit-scrollbar {

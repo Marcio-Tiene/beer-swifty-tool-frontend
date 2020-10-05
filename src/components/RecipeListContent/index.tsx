@@ -19,7 +19,7 @@ const RecipeListContent = () => {
   const [recipes] = GetRecipes();
 
   const recipeUpated = new Date(
-    Math.max(...recipes.map((e: any) => new Date(e.updated_at)))
+    `${recipes[0].updated_at}`
   ).toLocaleDateString();
 
   return (
@@ -59,7 +59,7 @@ const RecipeListContent = () => {
               <RecipeAtt>
                 <h3 style={{ color: '#592B02' }}>
                   EBC:&nbsp;{recipes.color} &nbsp; &nbsp; ABV:&nbsp;{' '}
-                  {Number(recipes.abv).toFixed(1)} &nbsp;&nbsp;IBU: &nbsp;
+                  {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp;IBU: &nbsp;
                   {recipes.ibu}{' '}
                 </h3>
                 <h1>Aqui Vem o rating</h1>

@@ -14,7 +14,6 @@ ReactDOM.render(
       <Switch>
         <Route path='/' component={Home} exact />
         <Route path='/recipes' component={Recipes} exact />
-
         <Route component={Error404} />
       </Switch>
     </BrowserRouter>

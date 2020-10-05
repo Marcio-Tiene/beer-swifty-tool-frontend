@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
 
 import GetRecipes from '../../hooks/GetRecipes';
@@ -11,9 +11,9 @@ import DashBoardDiv, { Title } from './styles';
 const DashboardContent = () => {
   const [recipes] = GetRecipes();
 
-  const recipeUpated = new Date(
-    Math.max(...recipes.map((e: any) => new Date(e.updated_at)))
-  ).toLocaleDateString();
+  // const recipeUpated = new Date(
+  //   Math.max(...recipes.map((e: any) => new Date(e.updated_at)))
+  // ).toLocaleDateString();
 
   let history = useHistory();
 
@@ -26,9 +26,12 @@ const DashboardContent = () => {
       ? `Total de ${recipes.length} receita`
       : `Total de ${recipes.length} receitas`;
 
+  const recipeUpated = new Date(
+    `${recipes[0].updated_at}`
+  ).toLocaleDateString();
+
   return (
     <>
-      {/* <RecipeApiCall.Provider value={{ LogedIn }}> */}
       <DashBoardDiv>
         <Title>Dashboard</Title>
       </DashBoardDiv>
@@ -57,7 +60,6 @@ const DashboardContent = () => {
           TitleBg='var(--quaternary-color)'
         ></Card>
       </DashBoardDiv>
-      {/* </RecipeApiCall.Provider> */}
     </>
   );
 };

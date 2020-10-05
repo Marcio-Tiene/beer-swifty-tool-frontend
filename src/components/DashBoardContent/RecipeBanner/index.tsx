@@ -10,7 +10,6 @@ const RecipeBanner = () => {
   return (
     <>
       {recipes.slice(0, 3).map((recipes: any) => {
-        // let styleDesc: string = '';
         let styleName: string = '';
         let styleImg: string = '';
         let updatedAt: string = new Date(
@@ -19,7 +18,6 @@ const RecipeBanner = () => {
 
         styles.map((style: any) => {
           if (style.id === recipes.style_id) {
-            // styleDesc = style.description;
             styleName = style.style_name;
             styleImg = style.image_url;
           }
