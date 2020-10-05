@@ -8,13 +8,8 @@ import RecipeBanner from './RecipeBanner';
 
 import DashBoardDiv, { Title } from './styles';
 
-const DashboardContent = () => {
+const DashboardContent: React.FC = () => {
   const [recipes] = GetRecipes();
-
-  // const recipeUpated = new Date(
-  //   Math.max(...recipes.map((e: any) => new Date(e.updated_at)))
-  // ).toLocaleDateString();
-
   let history = useHistory();
 
   const recipeLenght =
@@ -47,6 +42,7 @@ const DashboardContent = () => {
         >
           <RecipeBanner />
         </Card>
+
         <Card Title='Under Construction' TitleBg='var(--tertiary-color)'></Card>
       </DashBoardDiv>
 
