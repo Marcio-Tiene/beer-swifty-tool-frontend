@@ -1,6 +1,7 @@
 import React from 'react';
 import GetRecipes from '../../hooks/GetRecipes';
 import GetStyles from '../../hooks/GetStyles';
+import { Recipes } from '../../types';
 
 import {
   RecipeListPageDiv,
@@ -18,8 +19,12 @@ const RecipeListContent = () => {
 
   const [recipes] = GetRecipes();
 
-  const recipeUpated = new Date(
-    `${recipes[0].updated_at}`
+  const recipesLastUpdate = new Date(
+    Math.max(
+      ...recipes.map((recipe: Recipes) =>
+        new Date(`${recipe.updated_at}`).getTime()
+      )
+    )
   ).toLocaleDateString();
 
   return (
@@ -29,7 +34,7 @@ const RecipeListContent = () => {
           Receitas
         </h1>
         <p style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
-          Última atualização em : {recipeUpated}
+          Última atualização em : {recipesLastUpdate}
         </p>
         {recipes.map((recipes: any) => {
           let styleDesc: string = '';

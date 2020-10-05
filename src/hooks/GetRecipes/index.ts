@@ -25,15 +25,15 @@ const GetRecipes = () => {
       });
   }, []);
 
-  const recipesLastUpate = new Date(
-    Math.max(
-      ...recipes.map((recipe: Recipes) =>
-        new Date(`${recipe.updated_at}`).getTime()
-      )
-    )
-  ).toLocaleDateString();
+  // const recipesLastUpdate = new Date(
+  //   Math.max(
+  //     ...recipes.map((recipe: Recipes) =>
+  //       new Date(`${recipe.updated_at}`).getTime()
+  //     )
+  //   )
+  // ).toLocaleDateString();
 
-  return [recipes, recipesLastUpate];
+  return [recipes];
 };
 
 export default GetRecipes;

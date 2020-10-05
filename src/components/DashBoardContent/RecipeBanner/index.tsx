@@ -1,6 +1,7 @@
 import React from 'react';
 import GetRecipes from '../../../hooks/GetRecipes';
 import GetStyles from '../../../hooks/GetStyles';
+import { Recipes } from '../../../types';
 import { DashBoardRecipeCard, DivName, Span } from './styles';
 
 const RecipeBanner = () => {
