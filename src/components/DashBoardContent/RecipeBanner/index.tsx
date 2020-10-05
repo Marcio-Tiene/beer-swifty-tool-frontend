@@ -1,7 +1,7 @@
 import React from 'react';
 import GetRecipes from '../../../hooks/GetRecipes';
 import GetStyles from '../../../hooks/GetStyles';
-import { Recipes } from '../../../types';
+import { Recipes, Styles } from '../../../types';
 import { DashBoardRecipeCard, DivName, Span } from './styles';
 
 const RecipeBanner = () => {
@@ -10,14 +10,14 @@ const RecipeBanner = () => {
   const [recipes] = GetRecipes();
   return (
     <>
-      {recipes.slice(0, 3).map((recipes: any) => {
+      {recipes.slice(0, 3).map((recipes: Recipes) => {
         let styleName: string = '';
         let styleImg: string = '';
         let updatedAt: string = new Date(
           recipes.updated_at
         ).toLocaleDateString();
 
-        styles.map((style: any) => {
+        styles.map((style: Styles) => {
           if (style.id === recipes.style_id) {
             styleName = style.style_name;
             styleImg = style.image_url;

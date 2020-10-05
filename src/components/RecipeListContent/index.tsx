@@ -1,7 +1,7 @@
 import React from 'react';
 import GetRecipes from '../../hooks/GetRecipes';
 import GetStyles from '../../hooks/GetStyles';
-import { Recipes } from '../../types';
+import { Recipes, Styles } from '../../types';
 
 import {
   RecipeListPageDiv,
@@ -36,19 +36,18 @@ const RecipeListContent = () => {
         <p style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
           Última atualização em : {recipesLastUpdate}
         </p>
-        {recipes.map((recipes: any) => {
-          let styleDesc: string = '';
-          let styleName: string = '';
-          let styleImg: string = '';
-          let updatedAt: string = new Date(
-            recipes.updated_at
-          ).toLocaleDateString();
+        {recipes.map((recipes: Recipes) => {
+          let styleDesc = '';
+          let styleName = '';
+          let styleImg = '';
+          let updatedAt = new Date(`
+            ${recipes.updated_at}`).toLocaleDateString();
 
-          styles.map((style: any) => {
+          styles.map((style: Styles) => {
             if (style.id === recipes.style_id) {
-              styleDesc = style.description;
-              styleName = style.style_name;
-              styleImg = style.image_url;
+              styleDesc = style.description as string;
+              styleName = style.style_name as string;
+              styleImg = style.image_url as string;
             }
             return 1;
           });

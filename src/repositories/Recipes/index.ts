@@ -1,4 +1,4 @@
-import { Recipes } from '../../types';
+import { Recipes, Styles } from '../../types';
 
 export async function getRecipes(): Promise<Recipes[]> {
   return fetch('http://localhost:3333/recipes').then(async (res) => {
@@ -11,7 +11,7 @@ export async function getRecipes(): Promise<Recipes[]> {
   });
 }
 
-export async function getStyles(): Promise<Recipes[]> {
+export async function getStyles(): Promise<Styles[]> {
   return fetch('http://localhost:3333/style').then(async (res) => {
     if (res.ok) {
       const styleList = await res.json();
