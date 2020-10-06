@@ -1,4 +1,4 @@
-export interface Recipes {
+export default interface IRecipes {
   id: string;
   recipe_name: string;
   owner_id: string;
@@ -18,11 +18,4 @@ export interface Recipes {
   hops: {}[];
   fermentables: {}[];
   yeast: {}[];
-}
-
-export interface Styles {
-  id: string;
-  style_name: string;
-  description: string;
-  image_url: string;
 }
