@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
+import IStyles from '../../Interfaces/IBeerStyles';
 import { getStyles } from '../../repositories/Recipes';
-import { Styles } from '../../types';
 
-const GetStyles = () => {
-  const [styles, setStyles] = useState<Styles[]>([]);
+const GetStylesHook = () => {
+  const initialStyles: IStyles = {
+    id: '',
+    style_name: '',
+    description: '',
+    image_url: '',
+  };
+  const [styles, setStyles] = useState<IStyles[]>([initialStyles]);
 
   useEffect(() => {
     getStyles()
@@ -18,4 +24,4 @@ const GetStyles = () => {
   return [styles];
 };
 
-export default GetStyles;
+export default GetStylesHook;

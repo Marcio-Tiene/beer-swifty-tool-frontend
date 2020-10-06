@@ -1,7 +1,8 @@
 import React from 'react';
-import GetRecipes from '../../hooks/GetRecipes';
-import GetStyles from '../../hooks/GetStyles';
-import { Recipes, Styles } from '../../types';
+import GetRecipesHook from '../../hooks/GetRecipesHook';
+import GetStylesHook from '../../hooks/GetStylesHook';
+import IStyles from '../../Interfaces/IBeerStyles';
+import IRecipes from '../../Interfaces/IRecipes';
 
 import {
   RecipeListPageDiv,
@@ -15,14 +16,14 @@ import {
 } from './styles';
 
 const RecipeListContent = () => {
-  const [styles] = GetStyles();
+  const [styles] = GetStylesHook();
 
-  const [recipes] = GetRecipes();
+  const [recipes] = GetRecipesHook();
 
   const recipesLastUpdate = new Date(
     Math.max(
-      ...recipes.map((recipe: Recipes) =>
-        new Date(`${recipe.updated_at}`).getTime()
+      ...recipes.map((recipe: IRecipes) =>
+        new Date(recipe.updated_at).getTime()
       )
     )
   ).toLocaleDateString();
@@ -36,14 +37,14 @@ const RecipeListContent = () => {
         <p style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
           Última atualização em : {recipesLastUpdate}
         </p>
-        {recipes.map((recipes: Recipes) => {
+        {recipes.map((recipes: IRecipes) => {
           let styleDesc = '';
           let styleName = '';
           let styleImg = '';
           let updatedAt = new Date(`
             ${recipes.updated_at}`).toLocaleDateString();
 
-          styles.map((style: Styles) => {
+          styles.map((style: IStyles) => {
             if (style.id === recipes.style_id) {
               styleDesc = style.description as string;
               styleName = style.style_name as string;
