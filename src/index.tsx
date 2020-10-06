@@ -15,7 +15,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path='/' component={Home} exact />
-        <Route path='/DashBoard' component={Dashboard} exact />
+        <Route path='/dashboard' component={Dashboard} exact />
         <Route path='/recipes' component={Recipes} exact />
         <Route component={Error404} />
       </Switch>

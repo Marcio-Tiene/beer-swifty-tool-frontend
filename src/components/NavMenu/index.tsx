@@ -17,14 +17,19 @@ const NavMenu: React.FC = () => {
     <NavDiv>
       <NavButton
         onClick={() => {
-          history.push('/Dashboard');
+          history.push('/dashboard');
         }}
         active={isActive}
       >
         <NavImg src={NavSpan1} alt='' active={isActive} />{' '}
         {isActive && <NavText>Dashboard</NavText>}
       </NavButton>
-      <NavButton active={isActive}>
+      <NavButton
+        onClick={() => {
+          history.push('/recipes');
+        }}
+        active={isActive}
+      >
         <NavImg src={NavSpan2} alt='' active={isActive} />
         {isActive && <NavText>Receitas</NavText>}
       </NavButton>
