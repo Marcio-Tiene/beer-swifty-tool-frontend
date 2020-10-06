@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 
-import GetRecipes from '../../hooks/GetRecipes';
-import { Recipes } from '../../types';
+import GetRecipesHook from '../../hooks/GetRecipesHook';
+import IRecipes from '../../Interfaces/IRecipes';
 
 import Card from '../Card';
 import RecipeBanner from './RecipeBanner';
@@ -10,11 +10,11 @@ import RecipeBanner from './RecipeBanner';
 import DashBoardDiv, { Title } from './styles';
 
 const DashboardContent: React.FC = () => {
-  const [recipes] = GetRecipes();
+  const [recipes] = GetRecipesHook();
 
   const recipesLastUpdate = new Date(
     Math.max(
-      ...recipes.map((recipe: Recipes) =>
+      ...recipes.map((recipe: IRecipes) =>
         new Date(`${recipe.updated_at}`).getTime()
       )
     )
