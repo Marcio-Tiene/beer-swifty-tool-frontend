@@ -17,7 +17,7 @@ const NavMenu: React.FC = () => {
     <NavDiv>
       <NavButton
         onClick={() => {
-          history.push('/');
+          history.push('/Dashboard');
         }}
         active={isActive}
       >
