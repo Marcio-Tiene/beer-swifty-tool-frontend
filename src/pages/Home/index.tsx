@@ -1,15 +1,20 @@
 import React from 'react';
-import DashboardContent from '../../components/DashBoardContent';
+import { useHistory } from 'react-router';
+import Card from '../../components/Card';
+import DashBoardDiv from '../../components/DashBoardContent/styles';
 
-import PageDefault from '../../components/PageDefault/';
-
-const Home: React.FC = () => {
+const Home = () => {
+  const history = useHistory();
   return (
-    <>
-      <PageDefault>
-        <DashboardContent />
-      </PageDefault>
-    </>
+    <DashBoardDiv>
+      <Card
+        Title='Clique aqui para ir para o Dashboard'
+        OnClick={() => history.push('/Dashboard')}
+        TitleBg={'var(--tertiary-color)'}
+      >
+        <h1>Home Page/ Landing Page </h1>
+      </Card>
+    </DashBoardDiv>
   );
 };
 

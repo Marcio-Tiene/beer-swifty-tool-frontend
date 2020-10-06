@@ -12,6 +12,7 @@ export const HeaderDiv = styled.div`
   height: 100%;
 
   background-color: var(--primary-color);
+  cursor: pointer;
 `;
 
 export const LogoImg = styled.img`
