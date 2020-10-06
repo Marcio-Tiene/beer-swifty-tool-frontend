@@ -23,7 +23,7 @@ const RecipeListContent = () => {
   const recipesLastUpdate = new Date(
     Math.max(
       ...recipes.map((recipe: IRecipes) =>
-        new Date(`${recipe.updated_at}`).getTime()
+        new Date(recipe.updated_at).getTime()
       )
     )
   ).toLocaleDateString();
