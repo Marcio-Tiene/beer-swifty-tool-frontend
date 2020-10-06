@@ -1,9 +1,10 @@
-import { Recipes, Styles } from '../../types';
+import IStyles from '../../Interfaces/IBeerStyles';
+import IRecipes from '../../Interfaces/IRecipes';
 
-export async function getRecipes(): Promise<Recipes[]> {
+export async function getRecipes(): Promise<IRecipes[]> {
   return fetch('http://localhost:3333/recipes').then(async (res) => {
     if (res.ok) {
-      const recipeList = await res.json();
+      const recipeList = (await res.json()) as IRecipes[];
       return recipeList;
     }
 
@@ -11,10 +12,10 @@ export async function getRecipes(): Promise<Recipes[]> {
   });
 }
 
-export async function getStyles(): Promise<Styles[]> {
+export async function getStyles(): Promise<IStyles[]> {
   return fetch('http://localhost:3333/style').then(async (res) => {
     if (res.ok) {
-      const styleList = await res.json();
+      const styleList = (await res.json()) as IStyles[];
       return styleList;
     }
 

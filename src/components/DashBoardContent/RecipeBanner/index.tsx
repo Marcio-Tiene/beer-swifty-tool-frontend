@@ -1,23 +1,24 @@
 import React from 'react';
-import GetRecipes from '../../../hooks/GetRecipes';
-import GetStyles from '../../../hooks/GetStyles';
-import { Recipes, Styles } from '../../../types';
+import GetRecipesHook from '../../../hooks/GetRecipesHook';
+import GetStylesHook from '../../../hooks/GetStylesHook';
+import IStyles from '../../../Interfaces/IBeerStyles';
+import IRecipes from '../../../Interfaces/IRecipes';
 import { DashBoardRecipeCard, DivName, Span } from './styles';
 
 const RecipeBanner = () => {
-  const [styles] = GetStyles();
+  const [styles] = GetStylesHook();
 
-  const [recipes] = GetRecipes();
+  const [recipes] = GetRecipesHook();
   return (
     <>
-      {recipes.slice(0, 3).map((recipes: Recipes) => {
+      {recipes.slice(0, 3).map((recipes: IRecipes) => {
         let styleName: string = '';
         let styleImg: string = '';
         let updatedAt: string = new Date(
           recipes.updated_at
         ).toLocaleDateString();
 
-        styles.map((style: Styles) => {
+        styles.map((style: IStyles) => {
           if (style.id === recipes.style_id) {
             styleName = style.style_name;
             styleImg = style.image_url;
