@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import IStyles from '../../Interfaces/IBeerStyles';
+import IStyles from '../../Interfaces/IStyles';
 
 import api from '../../services/api';
 

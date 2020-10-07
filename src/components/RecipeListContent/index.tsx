@@ -1,7 +1,7 @@
 import React from 'react';
 import GetRecipesHook from '../../hooks/GetRecipesHook';
 import GetStylesHook from '../../hooks/GetStylesHook';
-import IStyles from '../../Interfaces/IBeerStyles';
+import IStyles from '../../Interfaces/IStyles';
 import IRecipes from '../../Interfaces/IRecipes';
 
 import {
@@ -21,11 +21,7 @@ const RecipeListContent = () => {
   const [recipes] = GetRecipesHook();
 
   const recipesLastUpdate = new Date(
-    Math.max(
-      ...recipes.map((recipe: IRecipes) =>
-        new Date(recipe.updated_at).getTime()
-      )
-    )
+    Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
   ).toLocaleDateString();
 
   return (

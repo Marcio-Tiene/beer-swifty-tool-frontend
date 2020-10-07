@@ -1,8 +1,8 @@
 import React from 'react';
 import GetRecipesHook from '../../../hooks/GetRecipesHook';
 import GetStylesHook from '../../../hooks/GetStylesHook';
-import IStyles from '../../../Interfaces/IBeerStyles';
-import IRecipes from '../../../Interfaces/IRecipes';
+import IStyles from '../../../Interfaces/IStyles';
+
 import { DashBoardRecipeCard, DivName, Span } from './styles';
 
 const RecipeBanner = () => {
@@ -11,7 +11,7 @@ const RecipeBanner = () => {
   const [recipes] = GetRecipesHook();
   return (
     <>
-      {recipes.slice(0, 3).map((recipes: IRecipes) => {
+      {recipes.slice(0, 3).map((recipes) => {
         let styleName: string = '';
         let styleImg: string = '';
         let updatedAt: string = new Date(
