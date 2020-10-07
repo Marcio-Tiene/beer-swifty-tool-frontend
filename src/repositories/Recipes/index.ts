@@ -1,4 +1,4 @@
-import IStyles from '../../Interfaces/IBeerStyles';
+import IStyles from '../../Interfaces/IStyles';
 import IRecipes from '../../Interfaces/IRecipes';
 
 export async function getRecipes(): Promise<IRecipes[]> {
