@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import IRecipes from '../../Interfaces/IRecipes';
 
-import { getRecipes } from '../../repositories/Recipes';
+import api from '../../services/api';
 
 const GetRecipesHook = () => {
   const initialRecipeValues: IRecipes = {
@@ -35,15 +35,15 @@ const GetRecipesHook = () => {
   }
 
   useEffect(() => {
-    getRecipes()
-      .then((recipeDbData) => {
-        const recipeSortedByDate = SortRecipesByDate(recipeDbData);
-
-        setRecipes(recipeSortedByDate);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    (async function loadRecipes(): Promise<void> {
+      try {
+        const response = await api.get('/recipes');
+        const sortedRecipesByDate = SortRecipesByDate(response.data);
+        setRecipes(sortedRecipesByDate);
+      } catch (err) {
+        console.log('algo de errado não está certo');
+      }
+    })();
   }, []);
 
   return [recipes];

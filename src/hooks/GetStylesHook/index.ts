@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import IStyles from '../../Interfaces/IBeerStyles';
-import { getStyles } from '../../repositories/Recipes';
+
+import api from '../../services/api';
 
 const GetStylesHook = () => {
   const initialStyles: IStyles = {
@@ -12,13 +13,14 @@ const GetStylesHook = () => {
   const [styles, setStyles] = useState<IStyles[]>([initialStyles]);
 
   useEffect(() => {
-    getStyles()
-      .then((styelesData) => {
-        setStyles(styelesData);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    (async function loadRecipes(): Promise<void> {
+      try {
+        const response = await api.get('/styles');
+        setStyles(response.data);
+      } catch (err) {
+        console.log('algo de errado não está certo');
+      }
+    })();
   }, []);
 
   return [styles];
