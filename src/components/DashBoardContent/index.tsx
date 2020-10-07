@@ -2,7 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router';
 
 import GetRecipesHook from '../../hooks/GetRecipesHook';
-import IRecipes from '../../Interfaces/IRecipes';
 
 import Card from '../Card';
 import RecipeBanner from './RecipeBanner';
@@ -13,11 +12,7 @@ const DashboardContent: React.FC = () => {
   const [recipes] = GetRecipesHook();
 
   const recipesLastUpdate = new Date(
-    Math.max(
-      ...recipes.map((recipe: IRecipes) =>
-        new Date(recipe.updated_at).getTime()
-      )
-    )
+    Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
   ).toLocaleDateString();
 
   const history = useHistory();
