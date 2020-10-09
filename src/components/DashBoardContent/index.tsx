@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../Card';
 
 import RecipeBanner from './RecipeBanner';
 
@@ -10,14 +11,15 @@ const DashboardContent: React.FC = () => {
       <DashBoardDiv>
         <Title>Dashboard</Title>
       </DashBoardDiv>
-      <DashBoardDiv>
-        <RecipeBanner />
-        <RecipeBanner />
-      </DashBoardDiv>
 
       <DashBoardDiv>
         <RecipeBanner />
-        <RecipeBanner />
+        <Card />
+      </DashBoardDiv>
+
+      <DashBoardDiv>
+        <Card />
+        <Card />
       </DashBoardDiv>
     </>
   );
