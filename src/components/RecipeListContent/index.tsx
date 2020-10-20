@@ -49,14 +49,14 @@ const RecipeListContent = () => {
             return 1;
           });
           return (
-            <RecipeListPageCard key={`${recipes.id}${recipes.recipe_name} `}>
+            <RecipeListPageCard key={`${recipes.id}${recipes.name} `}>
               <Span BgImg={styleImg} />
               <DivName>
-                <h1>{recipes.recipe_name}</h1>
+                <h1>{recipes.name}</h1>
                 <h3>{styleName}</h3>
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
-              <Desc>{styleDesc}</Desc>
+              <Desc>{recipes.description}</Desc>
               <RecipeAtt>
                 <h3 style={{ color: '#592B02' }}>
                   EBC:&nbsp;{recipes.color} &nbsp; &nbsp; ABV:&nbsp;{' '}

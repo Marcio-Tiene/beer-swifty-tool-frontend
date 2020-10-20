@@ -55,10 +55,10 @@ const RecipeBanner = () => {
             return 1;
           });
           return (
-            <DashBoardRecipeCard key={`${recipes.id}${recipes.recipe_name} `}>
+            <DashBoardRecipeCard key={`${recipes.id}${recipes.name} `}>
               <Span BgImg={styleImg} />
               <DivName>
-                <h1>{recipes.recipe_name}</h1>
+                <h1>{recipes.name}</h1>
                 <h3>{styleName}</h3>
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
