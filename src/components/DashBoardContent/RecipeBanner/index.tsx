@@ -2,16 +2,12 @@ import React from 'react';
 import { useHistory } from 'react-router';
 
 import GetRecipesHook from '../../../hooks/GetRecipesHook';
-import GetStylesHook from '../../../hooks/GetStylesHook';
 
-import IStyles from '../../../Interfaces/IStyles';
 import Card from '../../Card';
 
 import { DashBoardRecipeCard, DivName, Span } from './styles';
 
 const RecipeBanner = () => {
-  const [styles] = GetStylesHook();
-
   const [recipes] = GetRecipesHook();
 
   const recipesLastUpdate = new Date(
@@ -41,25 +37,16 @@ const RecipeBanner = () => {
         CardInfo2={recipesLastUpdate}
       >
         {recipes.map((recipes) => {
-          let styleName: string = '';
-          let styleImg: string = '';
           let updatedAt: string = new Date(
             recipes.updated_at
           ).toLocaleDateString();
 
-          styles.map((style: IStyles) => {
-            if (style.id === recipes.style_id) {
-              styleName = style.style_name;
-              styleImg = style.image_url;
-            }
-            return 1;
-          });
           return (
             <DashBoardRecipeCard key={`${recipes.id}${recipes.name} `}>
-              <Span BgImg={styleImg} />
+              <Span BgImg={recipes.img_url} />
               <DivName>
                 <h1>{recipes.name}</h1>
-                <h3>{styleName}</h3>
+
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
               <h5 style={{ alignSelf: 'center', width: '33%' }}>
