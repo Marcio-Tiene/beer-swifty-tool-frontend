@@ -1,5 +1,7 @@
 import React from 'react';
 import GetRecipesHook from '../../hooks/GetRecipesHook';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { FaStarHalf, FaStar } from 'react-icons/fa';
 
 import IRecipes from '../../Interfaces/IRecipes';
 
@@ -13,6 +15,7 @@ import {
   Desc,
   RecipeAtt,
 } from './styles';
+import { Link } from 'react-router-dom';
 
 const RecipeListContent = () => {
   const [recipes] = GetRecipesHook();
@@ -24,16 +27,19 @@ const RecipeListContent = () => {
   return (
     <Wrapper>
       <RecipeListPageDiv>
-        <h1 style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
-          Receitas
-        </h1>
-        <p style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
-          Última atualização em : {recipesLastUpdate}
-        </p>
-        {recipes.map((recipes: IRecipes) => {
-          let updatedAt = new Date(`
-            ${recipes.updated_at}`).toLocaleDateString();
+        <div className='divTittle'>
+          <h1 className='tittle'>Receitas </h1>
+          <Link to='/'>
+            <AiOutlinePlusCircle size={30} color='#f29f05' />
+          </Link>
+        </div>
 
+        <div className='subtittle'>
+          <p>Total de {recipes.length} receitas</p>
+          <p>Última atualização em : {recipesLastUpdate}</p>
+        </div>
+        {recipes.map((recipes: IRecipes) => {
+          let updatedAt = new Date(recipes.updated_at).toLocaleDateString();
           return (
             <RecipeListPageCard key={`${recipes.id}${recipes.name} `}>
               <Span BgImg={recipes.img_url} />
@@ -44,12 +50,19 @@ const RecipeListContent = () => {
               </DivName>
               <Desc>{recipes.description}</Desc>
               <RecipeAtt>
-                <h3 style={{ color: '#592B02' }}>
-                  EBC:&nbsp;{recipes.color} &nbsp; &nbsp; ABV:&nbsp;{' '}
-                  {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp;IBU: &nbsp;
-                  {recipes.ibu}{' '}
-                </h3>
-                <h1>Aqui Vem o rating</h1>
+                <div className='attributes'>
+                  <h3>EBC: {recipes.color} </h3>{' '}
+                  <h3>ABV: {Number(recipes.abv).toFixed(1)}%</h3>{' '}
+                  <h3>IBU: {recipes.ibu}</h3>
+                </div>
+                <h1>
+                  <FaStar size={25} />
+                  <FaStar size={25} />
+                  <FaStar size={25} />
+                  <FaStar size={25} />
+                  <FaStarHalf />
+                  4,7
+                </h1>
               </RecipeAtt>
             </RecipeListPageCard>
           );

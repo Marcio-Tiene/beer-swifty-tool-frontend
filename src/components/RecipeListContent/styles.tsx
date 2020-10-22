@@ -27,6 +27,40 @@ export const RecipeListPageDiv = styled.div`
   align-items: center;
   overflow-y: scroll;
 
+  .divTittle {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tittle {
+    font: normal normal normal 32px/43px Segoe UI;
+    text-align: left;
+
+    margin-bottom: 13px;
+  }
+
+  .subtittle {
+    display: flex;
+    width: 90%;
+    p {
+      padding-right: 25px;
+    }
+  }
+
+  h1 {
+    text-align: left;
+    font: normal normal normal 24px/32px Segoe UI;
+    letter-spacing: 0px;
+  }
+
+  p {
+    text-align: left;
+    font: normal normal normal 16px/21px Segoe UI;
+    letter-spacing: 0px;
+    color: #707070;
+  }
+
   ::-webkit-scrollbar {
     width: 1.5px;
   }
@@ -67,7 +101,6 @@ export const RecipeInfoBaner = styled.div`
 `;
 
 export const Span = styled.span`
-  content: '';
   background-image: url(${(p: Props) => p.BgImg});
   background-size: 190px auto;
   background-position: center;
@@ -99,35 +132,25 @@ export const Desc = styled.div`
   width: 50%;
   overflow: hidden;
   height: 80%;
-
-  ::-webkit-scrollbar {
-    max-height: 2px;
-    width: 2px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: none;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
-  }
 `;
 
 export const RecipeAtt = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   /* align-items: center; */
   width: 33%;
   height: 100%;
 
   padding: 10px 10px;
+
+  h3 {
+    width: 33%;
+    color: #592b02;
+  }
+
+  .attributes {
+    display: flex;
+    width: 100%;
+  }
 `;
