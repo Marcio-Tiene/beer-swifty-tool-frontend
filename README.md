@@ -33,13 +33,13 @@ Branch name for "next release" development: [develop]
 
 How to name your supporting branch prefixes?
 
-Feature branches? [feature/] -> press enter
+Feature branches? [feature/] -> feature/<your name>/ -> press enter
 
 Release branches? [release/] -> press enter
 
-Hotfix branches? [hotfix/] -> press enter
+Hotfix branches? [hotfix/] -> hotfix/<your namer>/ press enter
 
-Support branches? [support/] -> press enter
+Support branches? [support/] -> support/<your name>/ -> press enter
 
 Version tag prefix? [] -> press enter
 
@@ -53,11 +53,12 @@ release
 
 Then create the branch using git flow command.
 
-\$ git flow < job > start < {your name}/{detailed job that are you doing, without capital letters and using "-" instead of "space"} >
+\$ git flow < job > start < {detailed job that are you doing, without capital letters and using "-" instead of "space"} >
 
 eg:
+if the developer's name is wilson:
 
-\$ git flow feature start wilson/creating-the-subscriber-button.
+\$ git flow feature start creating-the-subscriber-button.
 
 The you will be redirected to the branch:
 
@@ -67,10 +68,10 @@ The you will be redirected to the branch:
 
 Then publish on git hub with the command:
 
-\$ git flow publish < {your name}/{detailed job that are you doing, without capital letters and using "-" instead of "space"} >
+\$ git flow publish < {detailed job that are you doing, without capital letters and using "-" instead of "space"} >
 
 eg:
 
-\$ git flow publish wilson/creating-the-subscriber-button.
+\$ git flow publish creating-the-subscriber-button.
 
 ### Now start your pull requests to develop branch
