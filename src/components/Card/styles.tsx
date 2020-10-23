@@ -16,6 +16,9 @@ export const CardWrapper = styled.div`
   flex: 0 1 628px;
   cursor: pointer;
   overflow: hidden;
+  &:hover {
+    box-shadow: 0px 0px 32px #00000042;
+  }
 `;
 
 export const CardHeader = styled.header`
@@ -31,6 +34,9 @@ export const CardHeader = styled.header`
 `;
 
 export const CardTitle = styled.h2`
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: normal;
   color: white;
   line-height: 100%;
   padding: 0 2%;
@@ -38,7 +44,9 @@ export const CardTitle = styled.h2`
 `;
 
 export const CardTitleInf = styled.p`
-  font-size: 1rem;
+  font-size: 16px;
+  line-height: 21px;
+
   color: white;
   line-height: 100%;
   padding: 0 2%;

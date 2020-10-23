@@ -49,7 +49,7 @@ const RecipeBanner = () => {
 
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
-              <h5 style={{ alignSelf: 'center', width: '33%' }}>
+              <h5>
                 EBC:&nbsp;{recipes.color} &nbsp;&nbsp; ABV:&nbsp;{' '}
                 {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp; IBU:&nbsp;
                 {recipes.ibu}

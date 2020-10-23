@@ -14,12 +14,12 @@ const DashboardContent: React.FC = () => {
 
       <DashBoardDiv>
         <RecipeBanner />
-        <Card />
+        <Card TitleBg='var(--tertiary-color)' />
       </DashBoardDiv>
 
       <DashBoardDiv>
-        <Card />
-        <Card />
+        <Card TitleBg='var(--secondary-color)' />
+        <Card TitleBg='var(--quaternary-color)' />
       </DashBoardDiv>
     </>
   );
