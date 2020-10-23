@@ -3,6 +3,9 @@ import styled from 'styled-components';
 interface Props {
   BgImg: string;
 }
+interface PropsA {
+  isActive: boolean;
+}
 
 // RL = Recipe List
 // RI = Recipe info card
@@ -11,7 +14,7 @@ export const Wrapper = styled.main`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 0%;
+  grid-template-columns: 1fr 471px;
 
   grid-template-areas: 'RL RI';
 `;
@@ -86,7 +89,7 @@ export const RecipeListPageCard = styled.div`
 
   border-radius: 16px;
 
-  opacity: 0.5;
+  opacity: ${(p: PropsA) => (p.isActive ? 1 : 0.5)};
   transition: linear 200ms;
 
   &:hover {
@@ -96,8 +99,13 @@ export const RecipeListPageCard = styled.div`
 
 export const RecipeInfoBaner = styled.div`
   grid-area: RI;
-  height: 100%;
-  width: 100%;
+  align-self: center;
+  justify-self: right;
+  height: 90%;
+  width: 90%;
+  box-shadow: 0px 4px 16px #0000003d;
+  /* border: 1px solid black; */
+  border-radius: 16px;
 `;
 
 export const Span = styled.span`
@@ -151,6 +159,13 @@ export const RecipeAtt = styled.div`
 
   .attributes {
     display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .rating {
+    display: flex;
+    justify-content: space-evenly;
+    height: fit-content;
     width: 100%;
   }
 `;

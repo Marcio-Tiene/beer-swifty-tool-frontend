@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import GetRecipesHook from '../../hooks/GetRecipesHook';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
-import { FaStarHalf, FaStar } from 'react-icons/fa';
 
 import IRecipes from '../../Interfaces/IRecipes';
 
@@ -16,9 +15,16 @@ import {
   RecipeAtt,
 } from './styles';
 import { Link } from 'react-router-dom';
+import Rating from '../Rating';
 
 const RecipeListContent = () => {
   const [recipes] = GetRecipesHook();
+
+  const [infoCardValues, setInfoCardValues] = useState(recipes[0]);
+
+  useEffect(() => {
+    setInfoCardValues(recipes[0]);
+  }, [recipes]);
 
   const recipesLastUpdate = new Date(
     Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
@@ -41,34 +47,37 @@ const RecipeListContent = () => {
         {recipes.map((recipes: IRecipes) => {
           let updatedAt = new Date(recipes.updated_at).toLocaleDateString();
           return (
-            <RecipeListPageCard key={`${recipes.id}${recipes.name} `}>
+            <RecipeListPageCard
+              isActive={infoCardValues.id === recipes.id ? true : false}
+              onClickCapture={() => setInfoCardValues(recipes)}
+              key={`${recipes.id}${recipes.name} `}
+            >
               <Span BgImg={recipes.img_url} />
               <DivName>
                 <h1>{recipes.name}</h1>
 
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
-              <Desc>{recipes.description}</Desc>
+              <Desc>{recipes.short_description}</Desc>
               <RecipeAtt>
                 <div className='attributes'>
                   <h3>EBC: {recipes.color} </h3>{' '}
                   <h3>ABV: {Number(recipes.abv).toFixed(1)}%</h3>{' '}
                   <h3>IBU: {recipes.ibu}</h3>
                 </div>
-                <h1>
-                  <FaStar size={25} />
-                  <FaStar size={25} />
-                  <FaStar size={25} />
-                  <FaStar size={25} />
-                  <FaStarHalf />
-                  4,7
-                </h1>
+                <div className='rating'>
+                  <Rating StarSize={25} />
+                </div>
               </RecipeAtt>
             </RecipeListPageCard>
           );
         })}
       </RecipeListPageDiv>
-      <RecipeInfoBaner></RecipeInfoBaner>
+      <RecipeInfoBaner>
+        <h1>{infoCardValues.name}</h1>
+        <h2>{infoCardValues.short_description}</h2>
+        <p>{infoCardValues.id}</p>
+      </RecipeInfoBaner>
     </Wrapper>
   );
 };
