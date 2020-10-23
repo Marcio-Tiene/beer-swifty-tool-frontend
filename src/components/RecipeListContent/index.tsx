@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import GetRecipesHook from '../../hooks/GetRecipesHook';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 import IRecipes from '../../Interfaces/IRecipes';
 
@@ -13,9 +14,17 @@ import {
   Desc,
   RecipeAtt,
 } from './styles';
+import { Link } from 'react-router-dom';
+import Rating from '../Rating';
 
 const RecipeListContent = () => {
   const [recipes] = GetRecipesHook();
+
+  const [infoCardValues, setInfoCardValues] = useState(recipes[0]);
+
+  useEffect(() => {
+    setInfoCardValues(recipes[0]);
+  }, [recipes]);
 
   const recipesLastUpdate = new Date(
     Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
@@ -24,38 +33,51 @@ const RecipeListContent = () => {
   return (
     <Wrapper>
       <RecipeListPageDiv>
-        <h1 style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
-          Receitas
-        </h1>
-        <p style={{ textAlign: 'left', width: '90%', marginBottom: '13px' }}>
-          Última atualização em : {recipesLastUpdate}
-        </p>
-        {recipes.map((recipes: IRecipes) => {
-          let updatedAt = new Date(`
-            ${recipes.updated_at}`).toLocaleDateString();
+        <div className='divTittle'>
+          <h1 className='tittle'>Receitas </h1>
+          <Link to='/'>
+            <AiOutlinePlusCircle size={30} color='#f29f05' />
+          </Link>
+        </div>
 
+        <div className='subtittle'>
+          <p>Total de {recipes.length} receitas</p>
+          <p>Última atualização em : {recipesLastUpdate}</p>
+        </div>
+        {recipes.map((recipes: IRecipes) => {
+          let updatedAt = new Date(recipes.updated_at).toLocaleDateString();
           return (
-            <RecipeListPageCard key={`${recipes.id}${recipes.name} `}>
+            <RecipeListPageCard
+              isActive={infoCardValues.id === recipes.id ? true : false}
+              onClickCapture={() => setInfoCardValues(recipes)}
+              key={`${recipes.id}${recipes.name} `}
+            >
               <Span BgImg={recipes.img_url} />
               <DivName>
                 <h1>{recipes.name}</h1>
 
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
-              <Desc>{recipes.description}</Desc>
+              <Desc>{recipes.short_description}</Desc>
               <RecipeAtt>
-                <h3 style={{ color: '#592B02' }}>
-                  EBC:&nbsp;{recipes.color} &nbsp; &nbsp; ABV:&nbsp;{' '}
-                  {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp;IBU: &nbsp;
-                  {recipes.ibu}{' '}
-                </h3>
-                <h1>Aqui Vem o rating</h1>
+                <div className='attributes'>
+                  <h3>EBC: {recipes.color} </h3>{' '}
+                  <h3>ABV: {Number(recipes.abv).toFixed(1)}%</h3>{' '}
+                  <h3>IBU: {recipes.ibu}</h3>
+                </div>
+                <div className='rating'>
+                  <Rating StarSize={25} />
+                </div>
               </RecipeAtt>
             </RecipeListPageCard>
           );
         })}
       </RecipeListPageDiv>
-      <RecipeInfoBaner></RecipeInfoBaner>
+      <RecipeInfoBaner>
+        <h1>{infoCardValues.name}</h1>
+        <h2>{infoCardValues.short_description}</h2>
+        <p>{infoCardValues.id}</p>
+      </RecipeInfoBaner>
     </Wrapper>
   );
 };

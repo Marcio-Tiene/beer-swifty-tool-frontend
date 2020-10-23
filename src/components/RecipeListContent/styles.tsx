@@ -3,6 +3,9 @@ import styled from 'styled-components';
 interface Props {
   BgImg: string;
 }
+interface PropsA {
+  isActive: boolean;
+}
 
 // RL = Recipe List
 // RI = Recipe info card
@@ -11,7 +14,7 @@ export const Wrapper = styled.main`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 0%;
+  grid-template-columns: 1fr 471px;
 
   grid-template-areas: 'RL RI';
 `;
@@ -26,6 +29,40 @@ export const RecipeListPageDiv = styled.div`
 
   align-items: center;
   overflow-y: scroll;
+
+  .divTittle {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tittle {
+    font: normal normal normal 32px/43px Segoe UI;
+    text-align: left;
+
+    margin-bottom: 13px;
+  }
+
+  .subtittle {
+    display: flex;
+    width: 90%;
+    p {
+      padding-right: 25px;
+    }
+  }
+
+  h1 {
+    text-align: left;
+    font: normal normal normal 24px/32px Segoe UI;
+    letter-spacing: 0px;
+  }
+
+  p {
+    text-align: left;
+    font: normal normal normal 16px/21px Segoe UI;
+    letter-spacing: 0px;
+    color: #707070;
+  }
 
   ::-webkit-scrollbar {
     width: 1.5px;
@@ -52,7 +89,7 @@ export const RecipeListPageCard = styled.div`
 
   border-radius: 16px;
 
-  opacity: 0.5;
+  opacity: ${(p: PropsA) => (p.isActive ? 1 : 0.5)};
   transition: linear 200ms;
 
   &:hover {
@@ -62,12 +99,16 @@ export const RecipeListPageCard = styled.div`
 
 export const RecipeInfoBaner = styled.div`
   grid-area: RI;
-  height: 100%;
-  width: 100%;
+  align-self: center;
+  justify-self: right;
+  height: 90%;
+  width: 90%;
+  box-shadow: 0px 4px 16px #0000003d;
+  /* border: 1px solid black; */
+  border-radius: 16px;
 `;
 
 export const Span = styled.span`
-  content: '';
   background-image: url(${(p: Props) => p.BgImg});
   background-size: 190px auto;
   background-position: center;
@@ -99,35 +140,32 @@ export const Desc = styled.div`
   width: 50%;
   overflow: hidden;
   height: 80%;
-
-  ::-webkit-scrollbar {
-    max-height: 2px;
-    width: 2px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: none;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
-  }
 `;
 
 export const RecipeAtt = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   /* align-items: center; */
   width: 33%;
   height: 100%;
 
   padding: 10px 10px;
+
+  h3 {
+    width: 33%;
+    color: #592b02;
+  }
+
+  .attributes {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .rating {
+    display: flex;
+    justify-content: space-evenly;
+    height: fit-content;
+    width: 100%;
+  }
 `;
