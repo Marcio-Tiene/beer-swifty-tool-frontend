@@ -59,8 +59,9 @@ export const RecipeListPageDiv = styled.div`
 
   p {
     text-align: left;
-    font: normal normal normal 16px/21px Segoe UI;
-    letter-spacing: 0px;
+    font-size: 16px;
+    line-height: 21px;
+
     color: #707070;
   }
 
@@ -132,7 +133,6 @@ export const DivName = styled.div`
 export const Desc = styled.div`
   display: flex;
   /* align-items: center; */
-  text-align: justify;
 
   margin: 10px 0;
   /* /* padding-top: 22px; */
@@ -140,6 +140,11 @@ export const Desc = styled.div`
   width: 50%;
   overflow: hidden;
   height: 80%;
+  p {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 21px;
+  }
 `;
 
 export const RecipeAtt = styled.div`

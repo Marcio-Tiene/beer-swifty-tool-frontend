@@ -16,6 +16,7 @@ export const CardWrapper = styled.div`
   flex: 0 1 628px;
   cursor: pointer;
   overflow: hidden;
+  transition: linear 0.2s;
   &:hover {
     box-shadow: 0px 0px 32px #00000042;
   }

@@ -26,6 +26,9 @@ const RecipeListContent = () => {
     setInfoCardValues(recipes[0]);
   }, [recipes]);
 
+  const recipeUpdatedTime = new Date(
+    infoCardValues.updated_at
+  ).toLocaleTimeString();
   const recipesLastUpdate = new Date(
     Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
   ).toLocaleDateString();
@@ -58,7 +61,9 @@ const RecipeListContent = () => {
 
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
-              <Desc>{recipes.short_description}</Desc>
+              <Desc>
+                <p>{recipes.short_description}</p>
+              </Desc>
               <RecipeAtt>
                 <div className='attributes'>
                   <h3>EBC: {recipes.color} </h3>{' '}
@@ -77,6 +82,7 @@ const RecipeListContent = () => {
         <h1>{infoCardValues.name}</h1>
         <h2>{infoCardValues.short_description}</h2>
         <p>{infoCardValues.id}</p>
+        <h3>{recipeUpdatedTime}</h3>
       </RecipeInfoBaner>
     </Wrapper>
   );
