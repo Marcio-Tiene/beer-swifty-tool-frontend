@@ -17,6 +17,7 @@ export const DashBoardRecipeCard = styled.div`
 
   &:hover {
     opacity: 1;
+    background: #0000000d 0% 0% no-repeat padding-box;
   }
   h1 {
     margin-top: 12.5px;
@@ -29,7 +30,7 @@ export const DashBoardRecipeCard = styled.div`
     line-height: 21px;
     font-weight: normal;
     align-self: center;
-    width: 36%;
+    width: 40%;
   }
   p {
     color: #707070;

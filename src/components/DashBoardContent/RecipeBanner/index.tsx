@@ -50,9 +50,9 @@ const RecipeBanner = () => {
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
               <h5>
-                EBC:&nbsp;{recipes.color} &nbsp;&nbsp; ABV:&nbsp;{' '}
-                {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp; IBU:&nbsp;
-                {recipes.ibu}
+                EBC:&nbsp;{recipes.color.toFixed(1)} &nbsp;&nbsp; ABV:&nbsp;{' '}
+                {recipes.abv.toFixed(1)}% &nbsp;&nbsp; IBU:&nbsp;
+                {recipes.ibu.toFixed(1)}
               </h5>
             </DashBoardRecipeCard>
           );
