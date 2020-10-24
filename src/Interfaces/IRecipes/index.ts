@@ -1,13 +1,13 @@
 export default interface IRecipes {
   id: string;
   name: string;
-  color: string;
-  og: string;
-  fg: string;
-  ibu: string;
-  abv: string;
-  final_volume: string;
-  global_efficiency: string;
+  color: number;
+  og: number;
+  fg: number;
+  ibu: number;
+  abv: number;
+  final_volume: number;
+  global_efficiency: number;
   description: string;
   short_description: string;
   notes: string;
@@ -24,15 +24,15 @@ export default interface IRecipes {
 
 export interface IHopRecipe {
   id: string;
-  quantity: string;
+  quantity: number;
   add_type: string;
-  add_time: string;
+  add_time: number;
 }
 export interface IFermentablesRecipe {
   id: string;
-  quantity: string;
-  potenttial: string;
-  color: string;
+  quantity: number;
+  potenttial: number;
+  color: number;
 }
 export interface IYeastRecipe {
   id: string;

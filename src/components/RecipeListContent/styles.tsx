@@ -59,13 +59,14 @@ export const RecipeListPageDiv = styled.div`
 
   p {
     text-align: left;
-    font: normal normal normal 16px/21px Segoe UI;
-    letter-spacing: 0px;
+    font-size: 16px;
+    line-height: 21px;
+
     color: #707070;
   }
 
   ::-webkit-scrollbar {
-    width: 1.5px;
+    width: 0px;
   }
 
   /* Track */
@@ -83,17 +84,19 @@ export const RecipeListPageCard = styled.div`
   height: 128px;
   width: 90%;
   display: flex;
-  box-shadow: 0px 4px 16px #0000003d;
-  border: 1px solid #f29f05;
+  box-shadow: ${(p: PropsA) =>
+    p.isActive ? '0px 4px 32px #00000029' : '0px 0px 4px #00000029'};
+  border: ${(p: PropsA) => (p.isActive ? '1px solid #f29f05' : 'none')};
   margin: 16px 0;
 
   border-radius: 16px;
 
-  opacity: ${(p: PropsA) => (p.isActive ? 1 : 0.5)};
+  opacity: ${(p: PropsA) => (p.isActive ? 1 : 0.6)};
   transition: linear 200ms;
 
   &:hover {
     opacity: 1;
+    box-shadow: 0px 4px 16px #0000003d;
   }
 `;
 
@@ -132,7 +135,6 @@ export const DivName = styled.div`
 export const Desc = styled.div`
   display: flex;
   /* align-items: center; */
-  text-align: justify;
 
   margin: 10px 0;
   /* /* padding-top: 22px; */
@@ -140,6 +142,11 @@ export const Desc = styled.div`
   width: 50%;
   overflow: hidden;
   height: 80%;
+  p {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 21px;
+  }
 `;
 
 export const RecipeAtt = styled.div`

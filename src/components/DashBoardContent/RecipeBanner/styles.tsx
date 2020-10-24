@@ -14,11 +14,30 @@ export const DashBoardRecipeCard = styled.div`
   box-shadow: 0px 0px 2px #00000029;
   opacity: 0.9;
   transition: linear 200ms;
-    }
 
-  &:hover{
-    opacity:1;
-  
+  &:hover {
+    opacity: 1;
+    background: #0000000d 0% 0% no-repeat padding-box;
+  }
+  h1 {
+    margin-top: 12.5px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: normal;
+  }
+  h5 {
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: normal;
+    align-self: center;
+    width: 40%;
+  }
+  p {
+    color: #707070;
+    margin-top: 6px;
+    font-size: 16px;
+    line-height: 21px;
+  }
 `;
 
 export const DivName = styled.div`

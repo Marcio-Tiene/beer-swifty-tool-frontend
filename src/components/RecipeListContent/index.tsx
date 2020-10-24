@@ -26,6 +26,9 @@ const RecipeListContent = () => {
     setInfoCardValues(recipes[0]);
   }, [recipes]);
 
+  const recipeUpdatedTime = new Date(
+    infoCardValues.updated_at
+  ).toLocaleTimeString();
   const recipesLastUpdate = new Date(
     Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
   ).toLocaleDateString();
@@ -58,12 +61,14 @@ const RecipeListContent = () => {
 
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
-              <Desc>{recipes.short_description}</Desc>
+              <Desc>
+                <p>{recipes.short_description}</p>
+              </Desc>
               <RecipeAtt>
                 <div className='attributes'>
-                  <h3>EBC: {recipes.color} </h3>{' '}
-                  <h3>ABV: {Number(recipes.abv).toFixed(1)}%</h3>{' '}
-                  <h3>IBU: {recipes.ibu}</h3>
+                  <h3>SRM: {recipes.color.toFixed(1)} </h3>{' '}
+                  <h3>ABV: {recipes.abv.toFixed(1)}%</h3>{' '}
+                  <h3>IBU: {recipes.ibu.toFixed(1)}</h3>
                 </div>
                 <div className='rating'>
                   <Rating StarSize={25} />
@@ -75,8 +80,18 @@ const RecipeListContent = () => {
       </RecipeListPageDiv>
       <RecipeInfoBaner>
         <h1>{infoCardValues.name}</h1>
-        <h2>{infoCardValues.short_description}</h2>
-        <p>{infoCardValues.id}</p>
+        <h2>{infoCardValues.description}</h2>
+        <p>{infoCardValues.og}</p>
+        <p>{infoCardValues.fg}</p>
+        <p>{infoCardValues.global_efficiency}</p>
+        <p>{infoCardValues.notes}</p>
+        <img
+          src={infoCardValues.img_url}
+          style={{
+            maxWidth: '100%',
+          }}
+        />
+        <h3>{recipeUpdatedTime}</h3>
       </RecipeInfoBaner>
     </Wrapper>
   );

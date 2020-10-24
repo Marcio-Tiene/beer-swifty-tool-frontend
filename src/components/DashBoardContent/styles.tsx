@@ -15,7 +15,9 @@ const DashBoardDiv = styled.div`
 `;
 export const Title = styled.h1`
   width: 1256px;
-  /* padding-left: 120px; */
+  font-size: 32px;
+  line-height: 43px;
+  font-weight: normal;
 `;
 export const UcImg = styled.img`
   height: calc(337px - 18%);
