@@ -10,8 +10,10 @@ const Rating = ({ StarSize }: Rating) => {
     <>
       <div
         style={{
+          padding: '0',
           display: 'flex',
-          justifyContent: 'center',
+
+          alignItems: 'flex-end',
           width: `${StarSize * 5}px`,
           height: `${StarSize * 1.2}px`,
         }}
@@ -24,6 +26,8 @@ const Rating = ({ StarSize }: Rating) => {
       </div>
       <h1
         style={{
+          alignItems: 'center',
+          padding: '0',
           fontSize: `${StarSize}px`,
           lineHeight: `${StarSize * 1.2}px`,
           color: ' #FFD500',

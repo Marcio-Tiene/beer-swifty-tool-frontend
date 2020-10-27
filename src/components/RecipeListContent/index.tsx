@@ -13,6 +13,7 @@ import {
   DivName,
   Desc,
   RecipeAtt,
+  RecipeBannerContainer,
 } from './styles';
 import { Link } from 'react-router-dom';
 import Rating from '../Rating';
@@ -47,39 +48,54 @@ const RecipeListContent = () => {
           <p>Total de {recipes.length} receitas</p>
           <p>Última atualização em : {recipesLastUpdate}</p>
         </div>
-        {recipes.map((recipes: IRecipes) => {
-          let updatedAt = new Date(recipes.updated_at).toLocaleDateString();
-          return (
-            <RecipeListPageCard
-              isActive={infoCardValues.id === recipes.id ? true : false}
-              onClickCapture={() => setInfoCardValues(recipes)}
-              key={`${recipes.id}${recipes.name} `}
-            >
-              <Span BgImg={recipes.img_url} />
-              <DivName>
-                <h1>{recipes.name}</h1>
+        <RecipeBannerContainer>
+          {recipes.map((recipes: IRecipes) => {
+            let updatedAt = new Date(recipes.updated_at).toLocaleDateString();
+            return (
+              <RecipeListPageCard
+                isActive={infoCardValues.id === recipes.id ? true : false}
+                onClickCapture={() => setInfoCardValues(recipes)}
+                key={`${recipes.id}${recipes.name} `}
+              >
+                <Span BgImg={recipes.img_url} />
+                <DivName>
+                  <h1>{recipes.name}</h1>
 
-                <p>Última atualização em: {updatedAt}</p>
-              </DivName>
-              <Desc>
-                <p>{recipes.short_description}</p>
-              </Desc>
-              <RecipeAtt>
-                <div className='attributes'>
-                  <h3>SRM: {recipes.color.toFixed(1)} </h3>{' '}
-                  <h3>ABV: {recipes.abv.toFixed(1)}%</h3>{' '}
-                  <h3>IBU: {recipes.ibu.toFixed(1)}</h3>
-                </div>
-                <div className='rating'>
-                  <Rating StarSize={25} />
-                </div>
-              </RecipeAtt>
-            </RecipeListPageCard>
-          );
-        })}
+                  <p>Última atualização em: {updatedAt}</p>
+                </DivName>
+                <Desc>
+                  <p>{recipes.short_description}</p>
+                </Desc>
+                <RecipeAtt>
+                  <div className='attributes'>
+                    <h3>SRM: {recipes.color.toFixed(1)} </h3>{' '}
+                    <h3>ABV: {recipes.abv.toFixed(1)}%</h3>{' '}
+                    <h3>IBU: {recipes.ibu.toFixed(1)}</h3>
+                  </div>
+                  <div className='rating'>
+                    <Rating StarSize={25} />
+                  </div>
+                </RecipeAtt>
+              </RecipeListPageCard>
+            );
+          })}
+        </RecipeBannerContainer>
       </RecipeListPageDiv>
       <RecipeInfoBaner>
-        <h1>{infoCardValues.name}</h1>
+        <h1 className='info-card-title'>{infoCardValues.name}</h1>
+        <div
+          style={{
+            padding: '11px 23px 0px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '50%',
+            height: '',
+          }}
+        >
+          <Rating StarSize={25} />
+        </div>
+
         <h2>{infoCardValues.description}</h2>
         <p>{infoCardValues.og}</p>
         <p>{infoCardValues.fg}</p>
@@ -90,6 +106,7 @@ const RecipeListContent = () => {
           style={{
             maxWidth: '100%',
           }}
+          alt='Imagem da receita'
         />
         <h3>{recipeUpdatedTime}</h3>
       </RecipeInfoBaner>
