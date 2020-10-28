@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import previous from '../../assets/img/previous.svg';
-import next from '../../assets/img/next.svg';
+import next from '../../assets/img/previous.svg';
 
 interface Props {
   active?: boolean;
@@ -44,6 +44,7 @@ export const NavButton = styled.a`
   }
 `;
 export const NavImg = styled.img`
+  background-color: white;
   width: 65px;
   border-radius: 50%;
   box-shadow: 0px 0px 5px 5px var(--blackLighter);
