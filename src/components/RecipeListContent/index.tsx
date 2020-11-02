@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GetRecipesHook from '../../hooks/GetRecipesHook';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { MdModeEdit } from 'react-icons/md';
 
 import IRecipes from '../../Interfaces/IRecipes';
 
@@ -82,17 +83,11 @@ const RecipeListContent = () => {
         </RecipeBannerContainer>
       </RecipeListPageDiv>
       <RecipeInfoBaner>
-        <h1 className='info-card-title'>{infoCardValues.name}</h1>
-        <div
-          style={{
-            padding: '11px 23px 0px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '50%',
-            height: '',
-          }}
-        >
+        <div className='title-container'>
+          <h1 className='info-card-title'>{infoCardValues.name}</h1>
+          <MdModeEdit size={27} color='var(--primary-color)' />
+        </div>
+        <div className='rating-container'>
           <Rating StarSize={25} />
         </div>
 

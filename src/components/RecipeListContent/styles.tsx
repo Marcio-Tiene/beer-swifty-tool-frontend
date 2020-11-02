@@ -109,7 +109,20 @@ export const RecipeInfoBaner = styled.div`
   transition: linear 0.2s;
 
   .info-card-title {
+  }
+
+  .rating-container {
     padding: 11px 23px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+  }
+  .title-container {
+    padding: 11px 23px 5px 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   ::-webkit-scrollbar {
