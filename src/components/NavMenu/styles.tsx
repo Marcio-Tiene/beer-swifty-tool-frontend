@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import previous from '../../assets/img/previous.svg';
-import next from '../../assets/img/previous.svg';
+import next from '../../assets/img/next.svg';
 
 interface Props {
-  active?: boolean;
+  active: boolean;
 }
 
 export const NavDiv = styled.nav`
@@ -71,8 +71,6 @@ export const NavText = styled.h3`
 `;
 
 export const ExpandButton = styled.span`
-  content: '';
-
   ${(p: Props) =>
     p.active
       ? css`
@@ -86,7 +84,6 @@ export const ExpandButton = styled.span`
 
   position: fixed;
   bottom: 2vw;
-
   align-self: center;
 
   width: 35px;

@@ -5,8 +5,10 @@ import NavSpan2 from '../../assets/img/nav-span-2.png';
 import NavSpan3 from '../../assets/img/nav-span-3.png';
 import NavSpan4 from '../../assets/img/nav-span-4.png';
 import { useHistory } from 'react-router';
+
 const NavMenu: React.FC = () => {
   let history = useHistory();
+
   const [isActive, setIsActive] = useState(false);
 
   function Active(): void {

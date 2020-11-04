@@ -85,7 +85,11 @@ const RecipeListContent = () => {
       <RecipeInfoBaner>
         <div className='title-container'>
           <h1 className='info-card-title'>{infoCardValues.name}</h1>
-          <MdModeEdit size={27} color='var(--primary-color)' />
+          <MdModeEdit
+            className='edit-button'
+            size={27}
+            color='var(--primary-color)'
+          />
         </div>
         <div className='rating-container'>
           <Rating StarSize={25} />

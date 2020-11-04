@@ -110,6 +110,14 @@ export const RecipeInfoBaner = styled.div`
 
   .info-card-title {
   }
+  .edit-button {
+    cursor: pointer;
+    transition: linear 0.2s;
+    &:hover {
+      transform: scale(1.5);
+      transition: linear 0.2s;
+    }
+  }
 
   .rating-container {
     padding: 11px 23px 0px;
