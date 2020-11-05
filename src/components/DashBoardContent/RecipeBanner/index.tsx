@@ -1,31 +1,16 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 
-import IRecipes from '../../../Interfaces/IRecipes';
+import GetRecipes from '../../../services/GetRecipes';
 
 import Card from '../../Card';
 
 import { DashBoardRecipeCard, DivName, Span } from './styles';
 
 const RecipeBanner = () => {
-  const recipes: IRecipes[] = JSON.parse(
-    localStorage.getItem('myRecipes') as string
-  );
-
-  const recipesLastUpdate = new Date(
-    Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
-  ).toLocaleDateString();
+  const { recipes, totalOfRecipes, recipesLastUpdate } = new GetRecipes();
 
   const history = useHistory();
-
-  const recipeLenght =
-    recipes.length <= 0
-      ? `Total de 0 receitas`
-      : recipes.length === null || NaN
-      ? `Total de 0 receitas`
-      : recipes.length === 1
-      ? `Total de ${recipes.length} receita`
-      : `Total de ${recipes.length} receitas`;
 
   return (
     <>
@@ -35,7 +20,7 @@ const RecipeBanner = () => {
         }}
         Title='Recipes'
         TitleBg='var(--primary-color)'
-        CardInfo1={recipeLenght}
+        CardInfo1={totalOfRecipes}
         CardInfo2={recipesLastUpdate}
       >
         {recipes.map((recipes) => {

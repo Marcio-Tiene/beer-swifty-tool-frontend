@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import GetRecipesHook from '../../hooks/GetRecipesHook';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { MdModeEdit } from 'react-icons/md';
 
@@ -18,9 +17,10 @@ import {
 } from './styles';
 import { Link } from 'react-router-dom';
 import Rating from '../Rating';
+import GetRecipes from '../../services/GetRecipes';
 
 const RecipeListContent = () => {
-  const [recipes] = GetRecipesHook();
+  const { recipes } = new GetRecipes();
 
   const [infoCardValues, setInfoCardValues] = useState(recipes[0]);
 
