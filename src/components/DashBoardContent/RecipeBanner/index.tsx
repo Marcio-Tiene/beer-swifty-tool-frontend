@@ -1,14 +1,16 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 
-import GetRecipesHook from '../../../hooks/GetRecipesHook';
+import IRecipes from '../../../Interfaces/IRecipes';
 
 import Card from '../../Card';
 
 import { DashBoardRecipeCard, DivName, Span } from './styles';
 
 const RecipeBanner = () => {
-  const [recipes] = GetRecipesHook();
+  const recipes: IRecipes[] = JSON.parse(
+    localStorage.getItem('myRecipes') as string
+  );
 
   const recipesLastUpdate = new Date(
     Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
