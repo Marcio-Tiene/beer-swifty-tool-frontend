@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { MdModeEdit } from 'react-icons/md';
 
@@ -23,10 +23,6 @@ const RecipeListContent = () => {
   const { recipes } = new GetRecipes();
 
   const [infoCardValues, setInfoCardValues] = useState(recipes[0]);
-
-  useEffect(() => {
-    setInfoCardValues(recipes[0]);
-  }, [recipes]);
 
   const recipeUpdatedTime = new Date(
     infoCardValues.updated_at

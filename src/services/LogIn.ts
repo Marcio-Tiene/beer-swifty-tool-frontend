@@ -2,11 +2,12 @@ import { useHistory } from 'react-router';
 
 import GetRecipes from './GetRecipes';
 
-class Login extends GetRecipes {
+class Login {
   history = useHistory();
+  getRecipes = new GetRecipes();
 
   async LogIn() {
-    await this.LoadRecipes();
+    await this.getRecipes.LoadRecipes();
 
     this.history.push('/Dashboard');
   }
