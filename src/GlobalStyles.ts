@@ -44,9 +44,20 @@ a{
         color: white;
     }
 
+} 
+p{
+
+    color: #707070;
+    text-align: left;
+    font-size: 16px;
+    line-height: 21px;
+
 }
 
 h1, h2, h3, h4, h5, h6{
+    font-weight:normal; 
+
+    
     color: var(--primary-color);
     font-family: 'Segoe UI';
 

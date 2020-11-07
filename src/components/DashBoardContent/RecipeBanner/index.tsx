@@ -1,29 +1,16 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 
-import GetRecipesHook from '../../../hooks/GetRecipesHook';
+import GetRecipes from '../../../services/GetRecipes';
 
 import Card from '../../Card';
 
 import { DashBoardRecipeCard, DivName, Span } from './styles';
 
 const RecipeBanner = () => {
-  const [recipes] = GetRecipesHook();
-
-  const recipesLastUpdate = new Date(
-    Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
-  ).toLocaleDateString();
+  const { recipes, totalOfRecipes, recipesLastUpdate } = new GetRecipes();
 
   const history = useHistory();
-
-  const recipeLenght =
-    recipes.length <= 0
-      ? `Total de 0 receitas`
-      : recipes.length === null || NaN
-      ? `Total de 0 receitas`
-      : recipes.length === 1
-      ? `Total de ${recipes.length} receita`
-      : `Total de ${recipes.length} receitas`;
 
   return (
     <>
@@ -33,7 +20,7 @@ const RecipeBanner = () => {
         }}
         Title='Recipes'
         TitleBg='var(--primary-color)'
-        CardInfo1={recipeLenght}
+        CardInfo1={totalOfRecipes}
         CardInfo2={recipesLastUpdate}
       >
         {recipes.map((recipes) => {
@@ -49,10 +36,10 @@ const RecipeBanner = () => {
 
                 <p>Última atualização em: {updatedAt}</p>
               </DivName>
-              <h5 style={{ alignSelf: 'center', width: '33%' }}>
-                EBC:&nbsp;{recipes.color} &nbsp;&nbsp; ABV:&nbsp;{' '}
-                {Number(recipes.abv).toFixed(1)}% &nbsp;&nbsp; IBU:&nbsp;
-                {recipes.ibu}
+              <h5>
+                EBC:&nbsp;{recipes.color.toFixed(1)} &nbsp;&nbsp; ABV:&nbsp;{' '}
+                {recipes.abv.toFixed(1)}% &nbsp;&nbsp; IBU:&nbsp;
+                {recipes.ibu.toFixed(1)}
               </h5>
             </DashBoardRecipeCard>
           );

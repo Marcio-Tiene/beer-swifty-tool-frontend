@@ -42,5 +42,5 @@ export const Content = styled.main`
   padding-top: 2vw;
 
   max-height: 100%;
-  overflow: auto;
+  overflow: hidden;
 `;

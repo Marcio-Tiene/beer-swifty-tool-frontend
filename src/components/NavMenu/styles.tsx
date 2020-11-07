@@ -3,7 +3,7 @@ import previous from '../../assets/img/previous.svg';
 import next from '../../assets/img/next.svg';
 
 interface Props {
-  active?: boolean;
+  active: boolean;
 }
 
 export const NavDiv = styled.nav`
@@ -44,6 +44,7 @@ export const NavButton = styled.a`
   }
 `;
 export const NavImg = styled.img`
+  background-color: white;
   width: 65px;
   border-radius: 50%;
   box-shadow: 0px 0px 5px 5px var(--blackLighter);
@@ -70,8 +71,6 @@ export const NavText = styled.h3`
 `;
 
 export const ExpandButton = styled.span`
-  content: '';
-
   ${(p: Props) =>
     p.active
       ? css`
@@ -85,7 +84,6 @@ export const ExpandButton = styled.span`
 
   position: fixed;
   bottom: 2vw;
-
   align-self: center;
 
   width: 35px;

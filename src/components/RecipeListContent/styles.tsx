@@ -3,7 +3,7 @@ import styled from 'styled-components';
 interface Props {
   BgImg: string;
 }
-interface PropsA {
+interface Acitive {
   isActive: boolean;
 }
 
@@ -12,7 +12,9 @@ interface PropsA {
 
 export const Wrapper = styled.main`
   width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
   display: grid;
   grid-template-columns: 1fr 471px;
 
@@ -27,17 +29,16 @@ export const RecipeListPageDiv = styled.div`
   max-height: 100%;
   flex-direction: column;
 
-  align-items: center;
-  overflow-y: scroll;
-
   .divTittle {
     width: 90%;
+
     display: flex;
     justify-content: space-between;
   }
 
   .tittle {
-    font: normal normal normal 32px/43px Segoe UI;
+    font-size: 32px;
+    line-height: 43px;
     text-align: left;
 
     margin-bottom: 13px;
@@ -45,27 +46,19 @@ export const RecipeListPageDiv = styled.div`
 
   .subtittle {
     display: flex;
-    width: 90%;
+    width: 100%;
     p {
       padding-right: 25px;
     }
   }
+`;
 
-  h1 {
-    text-align: left;
-    font: normal normal normal 24px/32px Segoe UI;
-    letter-spacing: 0px;
-  }
-
-  p {
-    text-align: left;
-    font: normal normal normal 16px/21px Segoe UI;
-    letter-spacing: 0px;
-    color: #707070;
-  }
+export const RecipeBannerContainer = styled.div`
+  height: 78vh;
+  overflow-y: scroll;
 
   ::-webkit-scrollbar {
-    width: 1.5px;
+    width: 0px;
   }
 
   /* Track */
@@ -83,29 +76,80 @@ export const RecipeListPageCard = styled.div`
   height: 128px;
   width: 90%;
   display: flex;
-  box-shadow: 0px 4px 16px #0000003d;
-  border: 1px solid #f29f05;
+  box-shadow: ${(p: Acitive) =>
+    p.isActive ? '0px 4px 32px #00000029' : '0px 0px 4px #00000029'};
+  border: ${(p: Acitive) => (p.isActive ? '1px solid #f29f05' : 'none')};
   margin: 16px 0;
 
   border-radius: 16px;
 
-  opacity: ${(p: PropsA) => (p.isActive ? 1 : 0.5)};
+  opacity: ${(p: Acitive) => (p.isActive ? 1 : 0.6)};
   transition: linear 200ms;
 
   &:hover {
     opacity: 1;
+    box-shadow: 0px 4px 16px #0000003d;
   }
 `;
 
 export const RecipeInfoBaner = styled.div`
   grid-area: RI;
-  align-self: center;
+  align-self: flex-start;
   justify-self: right;
-  height: 90%;
+
+  max-height: 85vh;
   width: 90%;
+  max-width: 90%;
   box-shadow: 0px 4px 16px #0000003d;
-  /* border: 1px solid black; */
+
   border-radius: 16px;
+
+  overflow-y: scroll;
+
+  transition: linear 0.2s;
+
+  .info-card-title {
+  }
+  .edit-button {
+    cursor: pointer;
+    transition: linear 0.2s;
+    &:hover {
+      transform: scale(1.5);
+      transition: linear 0.2s;
+    }
+  }
+
+  .rating-container {
+    padding: 11px 23px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+  }
+  .title-container {
+    padding: 11px 23px 5px 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+  }
+
+  &:hover {
+    box-shadow: 0px 4px 32px #0000003d;
+  }
 `;
 
 export const Span = styled.span`
@@ -131,15 +175,18 @@ export const DivName = styled.div`
 
 export const Desc = styled.div`
   display: flex;
-  /* align-items: center; */
-  text-align: justify;
 
   margin: 10px 0;
-  /* /* padding-top: 22px; */
+
   padding-right: 10px;
   width: 50%;
   overflow: hidden;
   height: 80%;
+  p {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 21px;
+  }
 `;
 
 export const RecipeAtt = styled.div`

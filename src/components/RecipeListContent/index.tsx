@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import GetRecipesHook from '../../hooks/GetRecipesHook';
+import React, { useState } from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { MdModeEdit } from 'react-icons/md';
 
 import IRecipes from '../../Interfaces/IRecipes';
 
@@ -13,19 +13,20 @@ import {
   DivName,
   Desc,
   RecipeAtt,
+  RecipeBannerContainer,
 } from './styles';
 import { Link } from 'react-router-dom';
 import Rating from '../Rating';
+import GetRecipes from '../../services/GetRecipes';
 
 const RecipeListContent = () => {
-  const [recipes] = GetRecipesHook();
+  const { recipes } = new GetRecipes();
 
   const [infoCardValues, setInfoCardValues] = useState(recipes[0]);
 
-  useEffect(() => {
-    setInfoCardValues(recipes[0]);
-  }, [recipes]);
-
+  const recipeUpdatedTime = new Date(
+    infoCardValues.updated_at
+  ).toLocaleTimeString();
   const recipesLastUpdate = new Date(
     Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
   ).toLocaleDateString();
@@ -44,39 +45,65 @@ const RecipeListContent = () => {
           <p>Total de {recipes.length} receitas</p>
           <p>Última atualização em : {recipesLastUpdate}</p>
         </div>
-        {recipes.map((recipes: IRecipes) => {
-          let updatedAt = new Date(recipes.updated_at).toLocaleDateString();
-          return (
-            <RecipeListPageCard
-              isActive={infoCardValues.id === recipes.id ? true : false}
-              onClickCapture={() => setInfoCardValues(recipes)}
-              key={`${recipes.id}${recipes.name} `}
-            >
-              <Span BgImg={recipes.img_url} />
-              <DivName>
-                <h1>{recipes.name}</h1>
+        <RecipeBannerContainer>
+          {recipes.map((recipes: IRecipes) => {
+            let updatedAt = new Date(recipes.updated_at).toLocaleDateString();
+            return (
+              <RecipeListPageCard
+                isActive={infoCardValues.id === recipes.id ? true : false}
+                onClickCapture={() => setInfoCardValues(recipes)}
+                key={`${recipes.id}${recipes.name} `}
+              >
+                <Span BgImg={recipes.img_url} />
+                <DivName>
+                  <h1>{recipes.name}</h1>
 
-                <p>Última atualização em: {updatedAt}</p>
-              </DivName>
-              <Desc>{recipes.short_description}</Desc>
-              <RecipeAtt>
-                <div className='attributes'>
-                  <h3>EBC: {recipes.color} </h3>{' '}
-                  <h3>ABV: {Number(recipes.abv).toFixed(1)}%</h3>{' '}
-                  <h3>IBU: {recipes.ibu}</h3>
-                </div>
-                <div className='rating'>
-                  <Rating StarSize={25} />
-                </div>
-              </RecipeAtt>
-            </RecipeListPageCard>
-          );
-        })}
+                  <p>Última atualização em: {updatedAt}</p>
+                </DivName>
+                <Desc>
+                  <p>{recipes.short_description}</p>
+                </Desc>
+                <RecipeAtt>
+                  <div className='attributes'>
+                    <h3>SRM: {recipes.color.toFixed(1)} </h3>{' '}
+                    <h3>ABV: {recipes.abv.toFixed(1)}%</h3>{' '}
+                    <h3>IBU: {recipes.ibu.toFixed(1)}</h3>
+                  </div>
+                  <div className='rating'>
+                    <Rating StarSize={25} />
+                  </div>
+                </RecipeAtt>
+              </RecipeListPageCard>
+            );
+          })}
+        </RecipeBannerContainer>
       </RecipeListPageDiv>
       <RecipeInfoBaner>
-        <h1>{infoCardValues.name}</h1>
-        <h2>{infoCardValues.short_description}</h2>
-        <p>{infoCardValues.id}</p>
+        <div className='title-container'>
+          <h1 className='info-card-title'>{infoCardValues.name}</h1>
+          <MdModeEdit
+            className='edit-button'
+            size={27}
+            color='var(--primary-color)'
+          />
+        </div>
+        <div className='rating-container'>
+          <Rating StarSize={25} />
+        </div>
+
+        <h2>{infoCardValues.description}</h2>
+        <p>{infoCardValues.og}</p>
+        <p>{infoCardValues.fg}</p>
+        <p>{infoCardValues.global_efficiency}</p>
+        <p>{infoCardValues.notes}</p>
+        <img
+          src={infoCardValues.img_url}
+          style={{
+            maxWidth: '100%',
+          }}
+          alt='Imagem da receita'
+        />
+        <h3>{recipeUpdatedTime}</h3>
       </RecipeInfoBaner>
     </Wrapper>
   );

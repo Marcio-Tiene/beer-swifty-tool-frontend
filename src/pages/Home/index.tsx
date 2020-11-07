@@ -1,15 +1,18 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+
 import Card from '../../components/Card';
 import DashBoardDiv from '../../components/DashBoardContent/styles';
 
+import Login from '../../services/LogIn';
+
 const Home = () => {
-  const history = useHistory();
+  const login = new Login();
+
   return (
     <DashBoardDiv>
       <Card
         Title='Clique aqui para ir para o Dashboard'
-        OnClick={() => history.push('/Dashboard')}
+        OnClick={() => login.LogIn()}
         TitleBg={'var(--tertiary-color)'}
       >
         <h1>Home Page/ Landing Page </h1>
