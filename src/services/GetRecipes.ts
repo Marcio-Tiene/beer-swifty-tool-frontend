@@ -1,15 +1,14 @@
+import { initialRecipeReference } from '../config/initialReferences';
 import IRecipes from '../Interfaces/IRecipes';
 import api from './api';
 
 export default class GetRecipes {
-  recipes: IRecipes[] = JSON.parse(localStorage.getItem('myRecipes') as string);
+  recipes: IRecipes[] = JSON.parse(
+    localStorage.getItem('myRecipes') as string
+  ) || [initialRecipeReference];
 
   totalOfRecipes =
-    this.recipes.length <= 0
-      ? `Total de 0 receitas`
-      : this.recipes.length === null || NaN
-      ? `Total de 0 receitas`
-      : this.recipes.length === 1
+    this.recipes.length === 1
       ? `Total de ${this.recipes.length} receita`
       : `Total de ${this.recipes.length} receitas`;
 
@@ -18,6 +17,7 @@ export default class GetRecipes {
       ...this.recipes.map((recipe) => new Date(recipe.updated_at).getTime())
     )
   ).toLocaleDateString();
+  hasRecipes = this.recipes[0].id !== 'NO_DATA';
 
   async LoadRecipes(): Promise<void> {
     try {
