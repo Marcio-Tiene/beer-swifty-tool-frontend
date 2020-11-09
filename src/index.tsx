@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 
 import Error404 from './pages/Error404';
 import Recipes from './pages/Recipes';
+import EditRecipe from './pages/EditRecipe';
 
 ReactDOM.render(
   <>
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route path='/' component={Home} exact />
         <Route path='/dashboard' component={Dashboard} exact />
         <Route path='/recipes' component={Recipes} exact />
+        <Route path='/recipes/:id' component={EditRecipe} />
         <Route component={Error404} />
       </Switch>
     </BrowserRouter>

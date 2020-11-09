@@ -96,10 +96,10 @@ export const RecipeListPageCard = styled.div`
 export const RecipeInfoBaner = styled.div`
   ${(p: Acitive) =>
     p.hasRecipes
-      ? css`
+      ? css``
+      : css`
           display: none;
-        `
-      : css``};
+        `};
   grid-area: RI;
   align-self: flex-start;
   justify-self: right;

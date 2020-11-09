@@ -15,11 +15,12 @@ import {
   RecipeAtt,
   RecipeBannerContainer,
 } from './styles';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Rating from '../Rating';
 import GetRecipes from '../../services/GetRecipes';
 
 const RecipeListContent = () => {
+  const history = useHistory();
   const { recipes, hasRecipes } = new GetRecipes();
 
   const [infoCardValues, setInfoCardValues] = useState(recipes[0]);
@@ -93,6 +94,7 @@ const RecipeListContent = () => {
         <div className='title-container'>
           <h1 className='info-card-title'>{infoCardValues.name}</h1>
           <MdModeEdit
+            onClick={() => history.push(`/recipes/${infoCardValues.id}`)}
             className='edit-button'
             size={27}
             color='var(--primary-color)'
