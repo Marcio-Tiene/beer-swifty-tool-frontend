@@ -1,15 +1,15 @@
+import { initialRecipeReference } from '../config/initialReferences';
 import IRecipes from '../Interfaces/IRecipes';
 import api from './api';
 
 export default class GetRecipes {
-  recipes: IRecipes[] = JSON.parse(localStorage.getItem('myRecipes') as string);
+  unSorteRecipes: IRecipes[] = JSON.parse(
+    localStorage.getItem('myRecipes') as string
+  ) || [initialRecipeReference];
+  recipes = this.SortRecipesByDate(this.unSorteRecipes);
 
   totalOfRecipes =
-    this.recipes.length <= 0
-      ? `Total de 0 receitas`
-      : this.recipes.length === null || NaN
-      ? `Total de 0 receitas`
-      : this.recipes.length === 1
+    this.recipes.length === 1
       ? `Total de ${this.recipes.length} receita`
       : `Total de ${this.recipes.length} receitas`;
 
@@ -18,13 +18,14 @@ export default class GetRecipes {
       ...this.recipes.map((recipe) => new Date(recipe.updated_at).getTime())
     )
   ).toLocaleDateString();
+  hasRecipes = this.recipes[0].id !== 'NO_DATA';
 
   async LoadRecipes(): Promise<void> {
     try {
       const response = await api.get('/recipes', { timeout: 1500 });
-      const sortedRecipesByDate = this.SortRecipesByDate(response.data);
+      // const sortedRecipesByDate = this.SortRecipesByDate(response.data);
 
-      localStorage.setItem('myRecipes', JSON.stringify(sortedRecipesByDate));
+      localStorage.setItem('myRecipes', JSON.stringify(response.data));
     } catch (err) {
       console.log(err);
     }

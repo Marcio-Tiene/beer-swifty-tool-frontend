@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface Props {
   BgImg: string;
 }
 interface Acitive {
-  isActive: boolean;
+  isActive?: boolean;
+  hasRecipes?: boolean;
 }
 
 // RL = Recipe List
@@ -93,18 +94,25 @@ export const RecipeListPageCard = styled.div`
 `;
 
 export const RecipeInfoBaner = styled.div`
+  ${(p: Acitive) =>
+    p.hasRecipes
+      ? css``
+      : css`
+          display: none;
+        `};
   grid-area: RI;
   align-self: flex-start;
   justify-self: right;
 
   max-height: 85vh;
-  width: 90%;
+  width: ${(p: Acitive) => (p.hasRecipes ? '90%' : '0')};
   max-width: 90%;
   box-shadow: 0px 4px 16px #0000003d;
 
   border-radius: 16px;
 
   overflow-y: scroll;
+  overflow-x: hidden;
 
   transition: linear 0.2s;
 
