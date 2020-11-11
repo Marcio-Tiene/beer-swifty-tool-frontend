@@ -50,9 +50,14 @@ const EditRecipe: React.FC<ParamTypes> = () => {
             defaultValue={recipeState.name}
           />
           <TextareaField
-            label='recipe notes'
-            name='notes'
-            defaultValue={recipeState.notes}
+            label='Short description '
+            name='short_description'
+            defaultValue={recipeState.short_description}
+          />
+          <TextareaField
+            label='URL da imagem '
+            name='img_url'
+            defaultValue={recipeState.img_url}
           />
           <button>editar</button>
         </Form>
