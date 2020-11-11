@@ -21,23 +21,20 @@ import GetRecipes from '../../services/GetRecipes';
 
 const RecipeListContent = () => {
   const history = useHistory();
-  const { recipes, hasRecipes } = new GetRecipes();
+  const { recipes, hasRecipes, recipesLastUpdate } = new GetRecipes();
 
   const [infoCardValues, setInfoCardValues] = useState(recipes[0]);
 
   const recipeUpdatedTime = new Date(
     infoCardValues.updated_at
   ).toLocaleTimeString();
-  const recipesLastUpdate = new Date(
-    Math.max(...recipes.map((recipe) => new Date(recipe.updated_at).getTime()))
-  ).toLocaleDateString();
 
   return (
     <Wrapper>
       <RecipeListPageDiv>
         <div className='divTittle'>
           <h1 className='tittle'>Receitas </h1>
-          <Link to='/'>
+          <Link to='/recipes/create'>
             <AiOutlinePlusCircle size={30} color='#f29f05' />
           </Link>
         </div>
@@ -90,7 +87,7 @@ const RecipeListContent = () => {
           </h1>
         )}
       </RecipeListPageDiv>
-      <RecipeInfoBaner hasRecipes={hasRecipes}>
+      <RecipeInfoBaner HasRecipes={hasRecipes}>
         <div className='title-container'>
           <h1 className='info-card-title'>{infoCardValues.name}</h1>
           <MdModeEdit
