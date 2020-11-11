@@ -8,7 +8,7 @@ import Error404 from '../Error404';
 import IRecipes from '../../Interfaces/IRecipes';
 import Form from '../../components/Form';
 import { SubmitHandler } from '@unform/core';
-// import api from '../../services/api';
+import api from '../../services/api';
 
 interface ParamTypes {
   id: string;
@@ -18,16 +18,22 @@ interface ParamTypes {
 
 const EditRecipe: React.FC<ParamTypes> = () => {
   const { id } = useParams<ParamTypes>();
-  const { recipes } = new GetRecipes();
+  const { recipes, LoadRecipes } = new GetRecipes();
 
   const recipe = recipes.find((recipe) => recipe.id === id) as IRecipes;
   const [recipeState, setRecipeState] = useState(recipe);
 
-  const handleSubmit: SubmitHandler<FormData> = async (data) => {
-    setRecipeState(Object.assign(recipeState, data));
-    // await api.put(`/recipes/${id}`, recipeState);
+  const updateRecipe = async (completeData: IRecipes) => {
+    await api.put(`/recipes/${id}`, completeData);
+  };
 
-    // await LoadRecipes();
+  const handleSubmit: SubmitHandler<IRecipes> = async (data) => {
+    setRecipeState({ ...recipeState, ...data });
+    const updatedRecipe = { ...recipe, ...data };
+
+    await updateRecipe(updatedRecipe);
+    LoadRecipes();
+
     console.log(recipeState);
   };
 

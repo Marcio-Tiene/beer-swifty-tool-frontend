@@ -12,7 +12,7 @@ export const initialRecipeReference: IRecipes = {
   notes: '',
   short_description: '',
   style_id: '',
-  created_at: '',
+  created_at: '2020-11-10T23:11:32.862Z',
   updated_at: '',
   fg: 0,
   og: 0,
