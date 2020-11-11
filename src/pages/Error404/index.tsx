@@ -6,7 +6,7 @@ const Error404: React.FC = () => {
   let history = useHistory();
 
   function HandleClick() {
-    history.push('/');
+    history.goBack();
   }
 
   return (
