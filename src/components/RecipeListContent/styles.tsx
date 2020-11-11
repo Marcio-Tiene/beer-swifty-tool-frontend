@@ -5,7 +5,7 @@ interface Props {
 }
 interface Acitive {
   isActive?: boolean;
-  hasRecipes?: boolean;
+  HasRecipes?: boolean;
 }
 
 // RL = Recipe List
@@ -95,7 +95,7 @@ export const RecipeListPageCard = styled.div`
 
 export const RecipeInfoBaner = styled.div`
   ${(p: Acitive) =>
-    p.hasRecipes
+    p.HasRecipes
       ? css``
       : css`
           display: none;
@@ -105,7 +105,7 @@ export const RecipeInfoBaner = styled.div`
   justify-self: right;
 
   max-height: 85vh;
-  width: ${(p: Acitive) => (p.hasRecipes ? '90%' : '0')};
+  width: ${(p: Acitive) => (p.HasRecipes ? '90%' : '0')};
   max-width: 90%;
   box-shadow: 0px 4px 16px #0000003d;
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 import { InputField, TextareaField } from './style';
 import GetRecipes from '../../services/GetRecipes';
@@ -17,22 +16,21 @@ interface ParamTypes {
   notes: string;
 }
 
-const EditRecipe: React.FC<ParamTypes> = () => {
-  const { id } = useParams<ParamTypes>();
+const CreateRecipe: React.FC<ParamTypes> = () => {
   const { recipes, LoadRecipes } = new GetRecipes();
 
-  const recipe = recipes.find((recipe) => recipe.id === id) as IRecipes;
+  const recipe = recipes[0];
   const [recipeState, setRecipeState] = useState(recipe);
 
-  const updateRecipe = async (completeData: IRecipes) => {
-    await api.put(`/recipes/${id}`, completeData);
+  const createRecipe = async (completeData: IRecipes) => {
+    await api.post(`/recipes`, completeData);
   };
 
   const handleSubmit: SubmitHandler<IRecipes> = async (data) => {
     setRecipeState({ ...recipeState, ...data });
-    const updatedRecipe = { ...recipe, ...data };
+    const createdRecipe = { ...recipe, ...data };
 
-    await updateRecipe(updatedRecipe);
+    await createRecipe(createdRecipe);
     LoadRecipes();
 
     console.log(recipeState);
@@ -59,7 +57,7 @@ const EditRecipe: React.FC<ParamTypes> = () => {
             name='img_url'
             defaultValue={recipeState.img_url}
           />
-          <button>editar</button>
+          <button>criar</button>
         </Form>
       </PageDefault>
     );
@@ -68,4 +66,4 @@ const EditRecipe: React.FC<ParamTypes> = () => {
   }
 };
 
-export default EditRecipe;
+export default CreateRecipe;
