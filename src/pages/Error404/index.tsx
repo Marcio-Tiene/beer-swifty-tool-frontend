@@ -12,7 +12,7 @@ const Error404: React.FC = () => {
   return (
     <Error>
       <h1>Error 404: Page not Found</h1>
-      <ToHome onClick={HandleClick}>Go Back to home</ToHome>
+      <ToHome onClick={HandleClick}>Go Back</ToHome>
     </Error>
   );
 };

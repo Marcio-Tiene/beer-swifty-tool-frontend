@@ -1,14 +1,15 @@
-import React, { Key, useState } from 'react';
+import React, { useState } from 'react';
 
 import { InputField, TextareaField } from './style';
 import GetRecipes from '../../services/GetRecipes';
-import Error404 from '../Error404';
 
 import IRecipes from '../../Interfaces/IRecipes';
 import Form from '../../components/Form';
 import { SubmitHandler } from '@unform/core';
 import api from '../../services/api';
 import PageDefault from '../../components/PageDefault';
+
+import { myRecipe } from '../../config/initialReferences';
 import { useHistory } from 'react-router';
 
 interface ParamTypes {
@@ -19,10 +20,9 @@ interface ParamTypes {
 
 const CreateRecipe: React.FC<ParamTypes> = () => {
   const history = useHistory();
-  const { recipes, LoadRecipes } = new GetRecipes();
+  const { LoadRecipes } = new GetRecipes();
 
-  const recipe = recipes[0];
-
+  const recipe = myRecipe;
   const [recipeState, setRecipeState] = useState(recipe);
 
   const createRecipe = async (completeData: IRecipes) => {
@@ -34,7 +34,8 @@ const CreateRecipe: React.FC<ParamTypes> = () => {
     const createdRecipe = { ...recipe, ...data };
 
     await createRecipe(createdRecipe);
-    LoadRecipes();
+    await LoadRecipes();
+    history.push('/recipes');
 
     console.log(recipeState);
   };
@@ -64,4 +65,5 @@ const CreateRecipe: React.FC<ParamTypes> = () => {
     </PageDefault>
   );
 };
+
 export default CreateRecipe;

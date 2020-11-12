@@ -19,7 +19,7 @@ export default interface IRecipes {
   updated_at: string;
   hops_recipe: IHopRecipe[];
   fermentables_recipe: IFermentablesRecipe[];
-  yeast_recipe: IYeastRecipe[];
+  yeasts_recipe: IYeastRecipe[];
 }
 
 export interface IHopRecipe {
