@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import { InputField, TextareaField } from './style';
 import GetRecipes from '../../services/GetRecipes';
@@ -18,6 +18,7 @@ interface ParamTypes {
 }
 
 const EditRecipe: React.FC<ParamTypes> = () => {
+  const history = useHistory();
   const { id } = useParams<ParamTypes>();
   const { recipes, LoadRecipes } = new GetRecipes();
 
@@ -38,10 +39,21 @@ const EditRecipe: React.FC<ParamTypes> = () => {
     console.log(recipeState);
   };
 
+  const DeleteRecipe = async () => {
+    await api.delete(`recipes/${id}`);
+  };
+
+  async function DeleteHandler() {
+    await DeleteRecipe();
+    await LoadRecipes();
+    history.push('/recipes');
+  }
+
   if (recipe) {
     return (
       <PageDefault>
         <h1>Receita : {recipeState.name}</h1>
+
         <img src={recipeState?.img_url} alt='foto da receita' />
         <Form onSubmit={handleSubmit}>
           <InputField
@@ -59,7 +71,10 @@ const EditRecipe: React.FC<ParamTypes> = () => {
             name='img_url'
             defaultValue={recipeState.img_url}
           />
-          <button>editar</button>
+          <div style={{ display: 'flex' }}>
+            <button>editar</button>
+            <button onClick={DeleteHandler}>delete</button>
+          </div>
         </Form>
       </PageDefault>
     );
