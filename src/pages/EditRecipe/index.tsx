@@ -10,6 +10,7 @@ import Form from '../../components/Form';
 import { SubmitHandler } from '@unform/core';
 import api from '../../services/api';
 import PageDefault from '../../components/PageDefault';
+import EditeRecipes from '../../services/EditRecipes';
 
 interface ParamTypes {
   id: string;
@@ -20,21 +21,16 @@ interface ParamTypes {
 const EditRecipe: React.FC<ParamTypes> = () => {
   const history = useHistory();
   const { id } = useParams<ParamTypes>();
-  const { recipes, LoadRecipes } = new GetRecipes();
+  const { recipes, EditRecipe, LoadRecipes } = new EditeRecipes();
 
   const recipe = recipes.find((recipe) => recipe.id === id) as IRecipes;
   const [recipeState, setRecipeState] = useState(recipe);
-
-  const updateRecipe = async (completeData: IRecipes) => {
-    await api.put(`/recipes/${id}`, completeData);
-  };
 
   const handleSubmit: SubmitHandler<IRecipes> = async (data) => {
     setRecipeState({ ...recipeState, ...data });
     const updatedRecipe = { ...recipe, ...data };
 
-    await updateRecipe(updatedRecipe);
-    LoadRecipes();
+    await EditRecipe(updatedRecipe, id);
 
     console.log(recipeState);
   };
